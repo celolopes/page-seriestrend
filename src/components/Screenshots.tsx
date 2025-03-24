@@ -14,18 +14,18 @@ const screenshots = [
       "Veja as séries mais populares do momento, organizadas por relevância.",
   },
   {
-    src: "/images/screenshot-2.png",
+    src: "/images/screenshot-3.png",
     alt: "Detalhes da série",
     title: "Detalhes da Série",
     description:
       "Acesse informações detalhadas sobre cada série, incluindo avaliações e estatísticas.",
   },
   {
-    src: "/images/screenshot-3.png",
-    alt: "Estatísticas semanais",
-    title: "Estatísticas Semanais",
+    src: "/images/screenshot-2.png",
+    alt: "Busca de séries e sugestões",
+    title: "Busca de Séries e Sugestões",
     description:
-      "Acompanhe gráficos e dados de tendências ao longo da semana para suas séries favoritas.",
+      "Encontre séries rapidamente com a busca inteligente e receba sugestões personalizadas das séries em tendência.",
   },
   {
     src: "/images/screenshot-4.png",
