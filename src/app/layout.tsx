@@ -50,7 +50,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        {/* Favicon padrão para compatibilidade geral */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* Favicon SVG para navegadores modernos */}
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
