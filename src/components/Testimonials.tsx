@@ -92,7 +92,7 @@ const Testimonials = () => {
                 ))}
               </div>
               <p className="text-gray-300 mb-6 italic">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </p>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-gradient-to-br from-accent to-accent-dark rounded-full flex items-center justify-center text-white font-bold">

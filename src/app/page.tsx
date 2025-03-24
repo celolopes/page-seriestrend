@@ -1,5 +1,4 @@
 import React from "react";
-import dynamic from "next/dynamic";
 
 // Componentes
 import Header from "@/components/Header";
