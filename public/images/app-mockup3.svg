@@ -1,0 +1,46 @@
+<svg width="300" height="600" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="600" rx="30" fill="#0D1117"/>
+  <rect x="15" y="15" width="270" height="570" rx="20" fill="#171E2B"/>
+  
+  <!-- Header -->
+  <rect x="30" y="50" width="240" height="60" rx="10" fill="#232F3B"/>
+  <text x="50" y="85" font-family="Arial" font-size="18" fill="white">Estatísticas Semanais</text>
+  
+  <!-- Chart -->
+  <rect x="30" y="130" width="240" height="200" rx="10" fill="#232F3B"/>
+  
+  <!-- Chart Bars -->
+  <rect x="50" y="280" width="20" height="30" rx="3" fill="#E85D04"/>
+  <rect x="80" y="260" width="20" height="50" rx="3" fill="#E85D04"/>
+  <rect x="110" y="190" width="20" height="120" rx="3" fill="#E85D04"/>
+  <rect x="140" y="240" width="20" height="70" rx="3" fill="#E85D04"/>
+  <rect x="170" y="220" width="20" height="90" rx="3" fill="#E85D04"/>
+  <rect x="200" y="150" width="20" height="160" rx="3" fill="#E85D04"/>
+  <rect x="230" y="200" width="20" height="110" rx="3" fill="#E85D04"/>
+  
+  <!-- Chart Lines -->
+  <line x1="40" y1="310" x2="260" y2="310" stroke="#555555" stroke-width="2"/>
+  <line x1="40" y1="150" x2="40" y2="310" stroke="#555555" stroke-width="2"/>
+  
+  <!-- Legend -->
+  <text x="50" y="330" font-family="Arial" font-size="12" fill="#AAAAAA">S</text>
+  <text x="80" y="330" font-family="Arial" font-size="12" fill="#AAAAAA">T</text>
+  <text x="110" y="330" font-family="Arial" font-size="12" fill="#AAAAAA">Q</text>
+  <text x="140" y="330" font-family="Arial" font-size="12" fill="#AAAAAA">Q</text>
+  <text x="170" y="330" font-family="Arial" font-size="12" fill="#AAAAAA">S</text>
+  <text x="200" y="330" font-family="Arial" font-size="12" fill="#AAAAAA">S</text>
+  <text x="230" y="330" font-family="Arial" font-size="12" fill="#AAAAAA">D</text>
+  
+  <!-- Stats -->
+  <rect x="30" y="360" width="240" height="50" rx="10" fill="#232F3B"/>
+  <text x="50" y="390" font-family="Arial" font-size="16" fill="white">Maior alta: Domingo</text>
+  
+  <rect x="30" y="430" width="240" height="50" rx="10" fill="#232F3B"/>
+  <text x="50" y="460" font-family="Arial" font-size="16" fill="white">Visualizações: 1.2M</text>
+  
+  <!-- Navigation Bar -->
+  <rect x="30" y="500" width="240" height="60" rx="10" fill="#232F3B"/>
+  <circle cx="70" cy="530" r="15" fill="#555555"/>
+  <circle cx="150" cy="530" r="15" fill="#555555"/>
+  <circle cx="230" cy="530" r="15" fill="#E85D04"/>
+</svg> 

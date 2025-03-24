@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 245, 245, 245;
+  --accent-color: 232, 93, 4;
+  --accent-light: 255, 140, 50;
+  --accent-dark: 200, 80, 0;
+  --app-dark: 13, 17, 23;
+  --app-blue: 23, 33, 43;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 13, 17, 23;
+    --background-end-rgb: 23, 33, 43;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Efeito de brilho para elementos com gradiente */
+.gradient-glow {
+  filter: drop-shadow(0 0 8px rgba(var(--accent-color), 0.5));
+}
+
+/* Classes de utilidade para as cores do app */
+.text-accent {
+  color: rgb(var(--accent-color));
+}
+
+.bg-accent {
+  background-color: rgb(var(--accent-color));
+}
+
+.border-accent {
+  border-color: rgb(var(--accent-color));
+}
+
+.from-accent {
+  --tw-gradient-from: rgb(var(--accent-color));
+}
+
+.to-accent-dark {
+  --tw-gradient-to: rgb(var(--accent-dark));
+}
+
+.hover\:text-accent:hover {
+  color: rgb(var(--accent-color));
+}
+
+.hover\:bg-accent:hover {
+  background-color: rgb(var(--accent-color));
+}
+
+.hover\:from-accent-dark:hover {
+  --tw-gradient-from: rgb(var(--accent-dark));
+}
+
+.hover\:to-accent-dark:hover {
+  --tw-gradient-to: rgb(var(--accent-dark));
+}
+
+.fill-accent {
+  fill: rgb(var(--accent-color));
+}
+
+.bg-app-dark {
+  background-color: rgb(var(--app-dark));
+}
+
+.bg-app-blue {
+  background-color: rgb(var(--app-blue));
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .text-shadow-none {
+    text-shadow: none;
+  }
 }
