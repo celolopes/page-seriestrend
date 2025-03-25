@@ -34,6 +34,13 @@ const screenshots = [
     description:
       "Organize suas séries favoritas em listas personalizadas para acompanhar seu progresso.",
   },
+  {
+    src: "/images/screenshot-5.png",
+    alt: "Curiosidades sobre a série",
+    title: "Curiosidades sobre a série",
+    description:
+      "Veja curiosidades sobre a série, incluindo curiosidades sobre os personagens, bastidores e o elenco através da IA.",
+  },
 ];
 
 const Screenshots = () => {
