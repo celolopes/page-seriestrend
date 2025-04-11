@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
-const screenshots = [
+const screenshotsPt = [
   {
     src: "/images/screenshot-1.png",
     alt: "Lista de séries em tendência",
@@ -43,7 +44,51 @@ const screenshots = [
   },
 ];
 
+const screenshotsEn = [
+  {
+    src: "/images/screenshot-1.png",
+    alt: "Trending series list",
+    title: "Trending List",
+    description:
+      "See the most popular series at the moment, organized by relevance.",
+  },
+  {
+    src: "/images/screenshot-3.png",
+    alt: "Series details",
+    title: "Series Details",
+    description:
+      "Access detailed information about each series, including ratings and statistics.",
+  },
+  {
+    src: "/images/screenshot-2.png",
+    alt: "Series search and suggestions",
+    title: "Series Search and Suggestions",
+    description:
+      "Find series quickly with smart search and get personalized suggestions of trending series.",
+  },
+  {
+    src: "/images/screenshot-4.png",
+    alt: "Custom series list",
+    title: "Custom List",
+    description:
+      "Organize your favorite series in custom lists to track your progress.",
+  },
+  {
+    src: "/images/screenshot-5.png",
+    alt: "Series trivia",
+    title: "Series Trivia",
+    description:
+      "See fun facts about the series, including character trivia, behind the scenes and cast information through AI.",
+  },
+];
+
 const Screenshots = () => {
+  const { translations, language } = useLanguage();
+  const t = translations.screenshots;
+
+  // Escolhe os screenshots baseado no idioma atual
+  const screenshots = language === "en" ? screenshotsEn : screenshotsPt;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -80,8 +125,20 @@ const Screenshots = () => {
     };
   }, [isPaused, activeIndex]);
 
+  // Textos com base no idioma para botões de controle
+  const prevButtonLabel =
+    language === "en" ? "Previous image" : "Imagem anterior";
+  const nextButtonLabel = language === "en" ? "Next image" : "Próxima imagem";
+  const pauseLabel = language === "en" ? "Pause" : "Pausar";
+  const playLabel = language === "en" ? "Play" : "Reproduzir";
+  const viewImageLabel = (index: number) =>
+    language === "en" ? `View image ${index + 1}` : `Ver imagem ${index + 1}`;
+
+  // ID da seção baseado no idioma
+  const sectionId = language === "en" ? "screenshots" : "prints";
+
   return (
-    <section id="prints" className="py-20 bg-app-dark text-white">
+    <section id={sectionId} className="py-20 bg-app-dark text-white">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-12"
@@ -91,11 +148,12 @@ const Screenshots = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Conheça o Series<span className="text-accent">Trend</span>
+            {t.title || "Conheça o Series"}
+            <span className="text-accent">Trend</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Veja como é fácil e intuitivo acompanhar as tendências de séries com
-            nosso aplicativo.
+            {t.subtitle ||
+              "Veja como é fácil e intuitivo acompanhar as tendências de séries com nosso aplicativo."}
           </p>
         </motion.div>
 
@@ -105,7 +163,7 @@ const Screenshots = () => {
             <button
               onClick={prevSlide}
               className="bg-app-blue/70 hover:bg-accent text-white p-3 rounded-full transition-colors"
-              aria-label="Imagem anterior"
+              aria-label={prevButtonLabel}
             >
               <ChevronLeft size={24} />
             </button>
@@ -114,7 +172,7 @@ const Screenshots = () => {
             <button
               onClick={nextSlide}
               className="bg-app-blue/70 hover:bg-accent text-white p-3 rounded-full transition-colors"
-              aria-label="Próxima imagem"
+              aria-label={nextButtonLabel}
             >
               <ChevronRight size={24} />
             </button>
@@ -125,7 +183,7 @@ const Screenshots = () => {
             <button
               onClick={togglePause}
               className="bg-app-blue/70 hover:bg-accent text-white p-2 rounded-full transition-colors"
-              aria-label={isPaused ? "Reproduzir" : "Pausar"}
+              aria-label={isPaused ? playLabel : pauseLabel}
             >
               {isPaused ? <Play size={18} /> : <Pause size={18} />}
             </button>
@@ -173,21 +231,21 @@ const Screenshots = () => {
                 <button
                   onClick={prevSlide}
                   className="bg-app-blue hover:bg-accent text-white p-3 rounded-full transition-colors"
-                  aria-label="Imagem anterior"
+                  aria-label={prevButtonLabel}
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={togglePause}
                   className="bg-app-blue hover:bg-accent text-white p-3 rounded-full transition-colors"
-                  aria-label={isPaused ? "Reproduzir" : "Pausar"}
+                  aria-label={isPaused ? playLabel : pauseLabel}
                 >
                   {isPaused ? <Play size={24} /> : <Pause size={24} />}
                 </button>
                 <button
                   onClick={nextSlide}
                   className="bg-app-blue hover:bg-accent text-white p-3 rounded-full transition-colors"
-                  aria-label="Próxima imagem"
+                  aria-label={nextButtonLabel}
                 >
                   <ChevronRight size={24} />
                 </button>
@@ -202,7 +260,7 @@ const Screenshots = () => {
                     className={`w-3 h-3 rounded-full transition-colors ${
                       index === activeIndex ? "bg-accent" : "bg-gray-500"
                     }`}
-                    aria-label={`Ver imagem ${index + 1}`}
+                    aria-label={viewImageLabel(index)}
                   />
                 ))}
               </div>

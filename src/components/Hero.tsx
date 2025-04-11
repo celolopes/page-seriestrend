@@ -89,21 +89,43 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:order-1 order-2 flex justify-center lg:justify-end"
+            className="hidden lg:flex justify-center lg:justify-end"
           >
             <div className="relative">
               <Image
-                src="/images/app-mockup.png"
+                src="/images/screenshot-1.png"
                 alt="SeriesTrend App"
                 width={350}
                 height={700}
-                className="z-10 relative"
+                className="z-10 relative rounded-2xl shadow-2xl"
                 priority
               />
               <div className="absolute w-full h-full top-0 left-0 blur-3xl bg-accent/20 rounded-full -z-10 animate-pulse"></div>
             </div>
           </motion.div>
         </div>
+
+        {/* App Info - Visível apenas em telas pequenas/médias */}
+        <motion.div
+          className="mt-16 text-center lg:hidden"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <h2 className="text-2xl font-bold mb-2 text-accent">
+            SeriesTrend App
+          </h2>
+          <div className="flex justify-center mt-4">
+            <Image
+              src="/images/screenshot-1.png"
+              alt="SeriesTrend App"
+              width={250}
+              height={500}
+              className="shadow-2xl rounded-xl"
+              priority
+            />
+          </div>
+        </motion.div>
       </div>
 
       {/* Curved divider */}

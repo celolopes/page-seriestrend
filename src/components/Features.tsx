@@ -74,18 +74,21 @@ const defaultFeatures = [
 ];
 
 const Features = () => {
-  const { translations } = useLanguage();
+  const { translations, language } = useLanguage();
   const t = translations.features;
 
   // Se o idioma for inglês e houver itens de recursos traduzidos, use-os
   // Caso contrário, use os recursos padrão
   const features =
-    translations.language === "en" && translations.features.items
+    language === "en" && translations.features.items
       ? translations.features.items
       : defaultFeatures;
 
+  // ID da seção baseado no idioma
+  const sectionId = language === "en" ? "features" : "recursos";
+
   return (
-    <section id="recursos" className="py-20 bg-app-blue/5">
+    <section id={sectionId} className="py-20 bg-app-blue/5">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-12"
@@ -96,7 +99,8 @@ const Features = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {t.title || "O que o Series"}
-            <span className="text-accent">Trend</span> oferece
+            <span className="text-accent">Trend</span>{" "}
+            {language === "en" ? "Offers" : "oferece"}
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
             {t.subtitle ||

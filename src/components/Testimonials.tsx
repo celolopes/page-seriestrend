@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Animação para os cards
 const cardVariants = {
@@ -17,7 +18,7 @@ const cardVariants = {
   }),
 };
 
-const testimonials = [
+const testimonialsPt = [
   {
     name: "Ana Silva",
     role: "Cinéfila",
@@ -48,9 +49,52 @@ const testimonials = [
   },
 ];
 
+const testimonialsEn = [
+  {
+    name: "Anna Smith",
+    role: "Movie Enthusiast",
+    stars: 5,
+    content:
+      "SeriesTrend has revolutionized the way I keep track of my series. I can stay on top of all trends quickly and intuitively. Highly recommended!",
+  },
+  {
+    name: "Robert Johnson",
+    role: "Series Critic",
+    stars: 5,
+    content:
+      "As a critic, I value accurate data on what's trending. SeriesTrend gives me exactly that, with a clean and efficient interface.",
+  },
+  {
+    name: "Julie Sanders",
+    role: "Digital Influencer",
+    stars: 4,
+    content:
+      "I use SeriesTrend daily to stay updated on what's hot. The trend analysis is perfect for recommending content to my followers!",
+  },
+  {
+    name: "Peter Miller",
+    role: "Streaming Enthusiast",
+    stars: 5,
+    content:
+      "Finally an app that helps me decide what to watch based on real data, not just recommendation algorithms. Simply essential!",
+  },
+];
+
 const Testimonials = () => {
+  const { translations, language } = useLanguage();
+  const t = translations.testimonials;
+
+  // Escolhe os depoimentos baseado no idioma atual
+  const testimonials = language === "en" ? testimonialsEn : testimonialsPt;
+
+  // Texto do botão de chamada à ação
+  const ctaButtonText = language === "en" ? "Try It Now" : "Experimente Agora";
+
+  // ID da seção baseado no idioma
+  const sectionId = language === "en" ? "testimonials" : "depoimentos";
+
   return (
-    <section id="depoimentos" className="py-20 bg-app-blue text-white">
+    <section id={sectionId} className="py-20 bg-app-blue text-white">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-12"
@@ -60,11 +104,15 @@ const Testimonials = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            O que nossos <span className="text-accent">usuários</span> dizem
+            {t.title || "O que nossos"}{" "}
+            <span className="text-accent">
+              {language === "en" ? "users" : "usuários"}
+            </span>{" "}
+            {language === "en" ? "say" : "dizem"}
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Veja por que mais de 10.000 pessoas já confiam no SeriesTrend para
-            acompanhar suas séries favoritas.
+            {t.subtitle ||
+              "Veja por que mais de 10.000 pessoas já confiam no SeriesTrend para acompanhar suas séries favoritas."}
           </p>
         </motion.div>
 
@@ -117,7 +165,7 @@ const Testimonials = () => {
               href="#download"
               className="bg-gradient-to-r from-accent to-accent-dark hover:from-accent-dark hover:to-accent-dark text-white px-6 py-3 rounded-lg font-semibold text-lg inline-block"
             >
-              Experimente Agora
+              {ctaButtonText}
             </a>
           </motion.div>
         </div>
