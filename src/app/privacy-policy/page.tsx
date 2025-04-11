@@ -258,12 +258,12 @@ export default function PrivacyPolicy() {
             </p>
             <ul className="list-none mt-2 mb-4 space-y-2">
               <li>
-                <strong>Por e-mail:</strong> privacy@seriestrend.com
+                <strong>Por e-mail:</strong> marcelo.cae@gmail.com
               </li>
               <li>
                 <strong>Pelo formulário de contato:</strong>{" "}
                 <Link href="/contato" className="text-accent hover:underline">
-                  www.seriestrend.com/contato
+                  seriestrend.vercel.app/contato
                 </Link>
               </li>
             </ul>

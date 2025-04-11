@@ -20,7 +20,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/en" className="flex items-center gap-2">
           <Image
             src="/images/logo.png"
             alt="SeriesTrend Logo"
@@ -32,29 +32,29 @@ const Header = () => {
             <span className="text-xl font-bold text-white">
               Series<span className="text-accent">Trend</span>
             </span>
-            <span className="text-xs text-gray-400">Séries em Alta</span>
+            <span className="text-xs text-gray-400">Track What's Trending</span>
           </div>
         </Link>
 
-        {/* Seletor de idioma */}
+        {/* Language switcher */}
         <div className="hidden xs:block md:block absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/" className="text-accent transition mr-2">
+          <Link
+            href="/"
+            className="text-white hover:text-accent transition mr-2"
+          >
             PT
           </Link>
           <span className="text-gray-400">|</span>
-          <Link
-            href="/en"
-            className="text-white hover:text-accent transition ml-2"
-          >
+          <Link href="/en" className="text-accent transition ml-2">
             EN
           </Link>
         </div>
 
-        {/* Botão de menu mobile */}
+        {/* Mobile menu button */}
         <button
           className="md:hidden text-white focus:outline-none"
           onClick={toggleMobileMenu}
-          aria-label="Abrir menu"
+          aria-label="Open menu"
         >
           {mobileMenuOpen ? (
             <svg
@@ -89,31 +89,31 @@ const Header = () => {
           )}
         </button>
 
-        {/* Menu de navegação desktop */}
+        {/* Desktop navigation */}
         <nav className="hidden md:block">
           <ul className="flex gap-6">
             <li>
               <Link
-                href="#recursos"
+                href="#features"
                 className="text-white hover:text-accent transition"
               >
-                Recursos
+                Features
               </Link>
             </li>
             <li>
               <Link
-                href="#prints"
+                href="#screenshots"
                 className="text-white hover:text-accent transition"
               >
-                Prints
+                Screenshots
               </Link>
             </li>
             <li>
               <Link
-                href="#depoimentos"
+                href="#testimonials"
                 className="text-white hover:text-accent transition"
               >
-                Depoimentos
+                Testimonials
               </Link>
             </li>
             <li>
@@ -130,7 +130,7 @@ const Header = () => {
         </nav>
       </div>
 
-      {/* Menu mobile */}
+      {/* Mobile menu */}
       {mobileMenuOpen && (
         <motion.div
           className="md:hidden bg-app-dark border-t border-gray-800 mt-4"
@@ -143,29 +143,29 @@ const Header = () => {
             <ul className="flex flex-col gap-4">
               <li>
                 <Link
-                  href="#recursos"
+                  href="#features"
                   className="text-white hover:text-accent transition block py-2"
                   onClick={toggleMobileMenu}
                 >
-                  Recursos
+                  Features
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#prints"
+                  href="#screenshots"
                   className="text-white hover:text-accent transition block py-2"
                   onClick={toggleMobileMenu}
                 >
-                  Prints
+                  Screenshots
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#depoimentos"
+                  href="#testimonials"
                   className="text-white hover:text-accent transition block py-2"
                   onClick={toggleMobileMenu}
                 >
-                  Depoimentos
+                  Testimonials
                 </Link>
               </li>
               <li className="pt-2">
@@ -181,7 +181,7 @@ const Header = () => {
                 <div className="flex justify-center">
                   <Link
                     href="/"
-                    className="text-accent transition mr-2"
+                    className="text-white hover:text-accent transition mr-2"
                     onClick={toggleMobileMenu}
                   >
                     PT
@@ -189,7 +189,7 @@ const Header = () => {
                   <span className="text-gray-400">|</span>
                   <Link
                     href="/en"
-                    className="text-white hover:text-accent transition ml-2"
+                    className="text-accent transition ml-2"
                     onClick={toggleMobileMenu}
                   >
                     EN
