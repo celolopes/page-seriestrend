@@ -98,7 +98,7 @@ const Features = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t.title || "O que o Series"}
+            {language === "en" ? "What Series" : "O que o Series"}
             <span className="text-accent">Trend</span>{" "}
             {language === "en" ? "Offers" : "oferece"}
           </h2>
