@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   TrendingUp,
   Bell,
@@ -24,39 +25,48 @@ const cardVariants = {
   }),
 };
 
-const features = [
+const featureIcons = [
+  <TrendingUp key="trending" className="h-10 w-10 text-accent" />,
+  <NewspaperIcon key="newspaper" className="h-10 w-10 text-accent" />,
+  <Bell key="bell" className="h-10 w-10 text-accent" />,
+  <Search key="search" className="h-10 w-10 text-accent" />,
+  <Calendar key="calendar" className="h-10 w-10 text-accent" />,
+  <Bookmark key="bookmark" className="h-10 w-10 text-accent" />,
+];
+
+// Definindo a interface para o objeto feature
+interface Feature {
+  title: string;
+  description: string;
+}
+
+const defaultFeatures = [
   {
-    icon: <TrendingUp className="h-10 w-10 text-accent" />,
     title: "Acompanhe Tendências",
     description:
       "Veja quais séries estão bombando no momento, com rankings diários e semanais atualizados em tempo real.",
   },
   {
-    icon: <NewspaperIcon className="h-10 w-10 text-accent" />,
     title: "Curiosidades de Séries através de IA",
     description:
       "Acesse curiosidades das suas séries favoritas através de IA, trazendo informações de bastidores e detalhes sobre temporadas e episódios que foram e estão sendo exibidos no momento.",
   },
   {
-    icon: <Bell className="h-10 w-10 text-accent" />,
     title: "Notificações",
     description:
       "Receba alertas quando suas séries favoritas entrarem nas tendências ou lançarem novos episódios.",
   },
   {
-    icon: <Search className="h-10 w-10 text-accent" />,
     title: "Busca Avançada",
     description:
       "Encontre rapidamente séries por título, gênero, plataforma ou popularidade com filtros específicos.",
   },
   {
-    icon: <Calendar className="h-10 w-10 text-accent" />,
     title: "Calendário de Lançamentos",
     description:
       "Mantenha-se atualizado com as datas de lançamento dos próximos episódios de suas séries favoritas.",
   },
   {
-    icon: <Bookmark className="h-10 w-10 text-accent" />,
     title: "Listas Personalizadas",
     description:
       "Crie e organize listas personalizadas com as séries que você está assistindo, já assistiu ou planeja assistir.",
@@ -64,6 +74,16 @@ const features = [
 ];
 
 const Features = () => {
+  const { translations } = useLanguage();
+  const t = translations.features;
+
+  // Se o idioma for inglês e houver itens de recursos traduzidos, use-os
+  // Caso contrário, use os recursos padrão
+  const features =
+    translations.language === "en" && translations.features.items
+      ? translations.features.items
+      : defaultFeatures;
+
   return (
     <section id="recursos" className="py-20 bg-app-blue/5">
       <div className="container mx-auto px-4">
@@ -75,16 +95,17 @@ const Features = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            O que o Series<span className="text-accent">Trend</span> oferece
+            {t.title || "O que o Series"}
+            <span className="text-accent">Trend</span> oferece
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Descubra todas as ferramentas e recursos que vão transformar a
-            maneira como você acompanha suas séries favoritas.
+            {t.subtitle ||
+              "Descubra todas as ferramentas e recursos que vão transformar a maneira como você acompanha suas séries favoritas."}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+          {features.map((feature: Feature, index: number) => (
             <motion.div
               key={index}
               className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-gray-100"
@@ -94,7 +115,7 @@ const Features = () => {
               viewport={{ once: true }}
               custom={index}
             >
-              <div className="mb-4">{feature.icon}</div>
+              <div className="mb-4">{featureIcons[index]}</div>
               <h3 className="text-xl font-semibold text-slate-900 mb-2">
                 {feature.title}
               </h3>

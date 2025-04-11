@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <main className="pt-28 pb-16 min-h-screen bg-white text-gray-800">
+    <main className="pt-28 pb-16 min-h-screen">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <Link
