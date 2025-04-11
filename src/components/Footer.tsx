@@ -111,7 +111,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#"
+                  href="/terms"
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
                   Termos de Uso
@@ -119,7 +119,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/privacy-policy"
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
                   Política de Privacidade
