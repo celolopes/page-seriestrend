@@ -150,10 +150,10 @@ const Footer = () => {
               <li className="text-gray-400">
                 Email:{" "}
                 <a
-                  href="mailto:marcelo.cae@gmail.com"
+                  href="mailto:seriestrend.app@gmail.com"
                   className="hover:text-accent transition-colors"
                 >
-                  marcelo.cae@gmail.com
+                  seriestrend.app@gmail.com
                 </a>
               </li>
               <li className="text-gray-400">
