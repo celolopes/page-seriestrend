@@ -106,7 +106,7 @@ const Download = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <motion.a
-              href="https://play.google.com/store"
+              href="https://play.google.com/store/apps/details?id=com.celolopes.seriestrend"
               className="w-full flex justify-center"
               target="_blank"
               rel="noopener noreferrer"
