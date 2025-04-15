@@ -62,7 +62,7 @@ export default function Contact() {
                     id="email"
                     name="email"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                    placeholder="seu.email@exemplo.com"
+                    placeholder="seriestrend.app@gmail.com"
                     required
                   />
                 </div>
@@ -124,10 +124,10 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-medium mb-2">E-mail</h3>
                   <a
-                    href="mailto:marcelo.cae@gmail.com"
+                    href="mailto:seriestrend.app@gmail.com"
                     className="text-accent hover:underline"
                   >
-                    marcelo.cae@gmail.com
+                    seriestrend.app@gmail.com
                   </a>
                 </div>
 
