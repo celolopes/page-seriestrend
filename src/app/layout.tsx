@@ -55,7 +55,25 @@ export default function RootLayout({
         {/* Favicon SVG para navegadores modernos */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {/* Google tag (gtag.js) - Adicionado para Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-N7JSFYHCBC"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-N7JSFYHCBC');
+          `,
+          }}
+        />
+        {/* Fim Google tag (gtag.js) */}
+        {children}
+      </body>
     </html>
   );
 }
