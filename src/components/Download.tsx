@@ -28,7 +28,6 @@ const Download = () => {
         ];
 
   // Textos para componentes específicos
-  const appStoreComingSoon = language === "en" ? "COMING SOON" : "EM BREVE";
   const deviceRequirements =
     language === "en"
       ? "Available for iOS 12.0+ and Android 8.0+"
@@ -130,30 +129,29 @@ const Download = () => {
             </motion.a>
 
             <div className="relative w-full flex justify-center">
-              <motion.div
-                className="relative overflow-hidden rounded-xl shadow-lg"
+              <motion.a
+                href="https://apps.apple.com/br/app/seriestrend/id6746804882"
+                className="w-full flex justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="opacity-50">
+                <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <Image
                     src="/images/app-store-badge.png"
                     alt={
                       t.appStore ||
                       (language === "en"
-                        ? "Coming soon to App Store"
-                        : "Em breve na App Store")
+                        ? "Download on the App Store"
+                        : "Baixar na App Store")
                     }
                     width={180}
                     height={60}
-                    className="h-auto filter grayscale"
+                    className="h-auto"
                   />
                 </div>
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                  <div className="px-4 py-1 bg-black/70 rounded-md text-white font-bold text-sm border border-white/20">
-                    {appStoreComingSoon}
-                  </div>
-                </div>
-              </motion.div>
+              </motion.a>
             </div>
 
             <p className="text-gray-500 text-sm text-center">
