@@ -146,7 +146,7 @@ const Download = () => {
                         ? "Download on the App Store"
                         : "Baixar na App Store")
                     }
-                    width={180}
+                    width={200}
                     height={60}
                     className="h-auto"
                   />
