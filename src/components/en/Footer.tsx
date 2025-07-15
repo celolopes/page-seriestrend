@@ -4,16 +4,22 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Twitter, Facebook, Github } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { translations, language } = useLanguage();
+  const t = translations.footer;
 
   return (
     <footer className="bg-app-dark text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-1">
-            <Link href="/en" className="flex items-center gap-2 mb-4">
+            <Link
+              href={`/${language}`}
+              className="flex items-center gap-2 mb-4"
+            >
               <Image
                 src="/images/logo.png"
                 alt="SeriesTrend Logo"
@@ -30,10 +36,7 @@ const Footer = () => {
                 </span>
               </div>
             </Link>
-            <p className="text-gray-400 mb-6">
-              The essential app to track the most watched TV series trends of
-              the week and day.
-            </p>
+            <p className="text-gray-400 mb-6">{t.description}</p>
             <div className="flex gap-4">
               <a
                 href="https://instagram.com"
@@ -78,7 +81,7 @@ const Footer = () => {
                   href="#features"
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
-                  Features
+                  {t.quickLinks.features}
                 </Link>
               </li>
               <li>
@@ -86,7 +89,7 @@ const Footer = () => {
                   href="#screenshots"
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
-                  Screenshots
+                  {t.quickLinks.screenshots}
                 </Link>
               </li>
               <li>
@@ -94,7 +97,7 @@ const Footer = () => {
                   href="#testimonials"
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
-                  Testimonials
+                  {t.quickLinks.testimonials}
                 </Link>
               </li>
               <li>
@@ -102,7 +105,7 @@ const Footer = () => {
                   href="#download"
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
-                  Download
+                  {t.quickLinks.download}
                 </Link>
               </li>
             </ul>
@@ -113,26 +116,18 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/en/terms"
+                  href={`/${language}/terms`}
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
-                  Terms of Use
+                  {t.legal.terms}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/en/privacy-policy"
+                  href={`/${language}/privacy-policy`}
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-accent transition-colors"
-                >
-                  Cookies
+                  {t.legal.privacy}
                 </Link>
               </li>
               <li>
@@ -140,7 +135,15 @@ const Footer = () => {
                   href="#"
                   className="text-gray-400 hover:text-accent transition-colors"
                 >
-                  Licenses
+                  {t.legal.cookies}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-gray-400 hover:text-accent transition-colors"
+                >
+                  {t.legal.licenses}
                 </Link>
               </li>
             </ul>
@@ -150,7 +153,7 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="text-gray-400">
-                Email:{" "}
+                {t.contact.email}{" "}
                 <a
                   href="mailto:marcelo.cae@gmail.com"
                   className="hover:text-accent transition-colors"
@@ -160,10 +163,10 @@ const Footer = () => {
               </li>
               <li className="text-gray-400">
                 <Link
-                  href="/en/contact"
+                  href={`/${language}/contact`}
                   className="hover:text-accent transition-colors"
                 >
-                  Contact Form
+                  {t.contact.form}
                 </Link>
               </li>
             </ul>
@@ -172,7 +175,9 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            &copy; {currentYear} SeriesTrend. All rights reserved.
+            {t.copyright
+              ? t.copyright(currentYear)
+              : `© ${currentYear} SeriesTrend. All rights reserved.`}
           </p>
         </div>
       </div>

@@ -4,9 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { translations, language } = useLanguage();
+  const t = translations.header;
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -20,7 +23,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/en" className="flex items-center gap-2">
+        <Link href={`/${language}`} className="flex items-center gap-2">
           <Image
             src="/images/logo.png"
             alt="SeriesTrend Logo"
@@ -42,11 +45,19 @@ const Header = () => {
             href="/"
             className="text-white hover:text-accent transition mr-2"
           >
-            PT
+            {t.language.pt}
           </Link>
-          <span className="text-gray-400">|</span>
-          <Link href="/en" className="text-accent transition ml-2">
-            EN
+          <span className="text-gray-400">{t.language.separator}</span>
+          <Link href="/en" className="text-accent transition mx-2">
+            {t.language.en}
+          </Link>
+          <span className="text-gray-400">{t.language.separator}</span>
+          <Link href="/es" className="text-accent transition mx-2">
+            {t.language.es}
+          </Link>
+          <span className="text-gray-400">{t.language.separator}</span>
+          <Link href="/zh" className="text-accent transition ml-2">
+            {t.language.zh}
           </Link>
         </div>
 
@@ -54,7 +65,7 @@ const Header = () => {
         <button
           className="md:hidden text-white focus:outline-none"
           onClick={toggleMobileMenu}
-          aria-label="Open menu"
+          aria-label={mobileMenuOpen ? t.menu.close : t.menu.open}
         >
           {mobileMenuOpen ? (
             <svg
@@ -97,7 +108,7 @@ const Header = () => {
                 href="#features"
                 className="text-white hover:text-accent transition"
               >
-                Features
+                {t.nav.features}
               </Link>
             </li>
             <li>
@@ -105,7 +116,7 @@ const Header = () => {
                 href="#screenshots"
                 className="text-white hover:text-accent transition"
               >
-                Screenshots
+                {t.nav.screenshots}
               </Link>
             </li>
             <li>
@@ -113,7 +124,7 @@ const Header = () => {
                 href="#testimonials"
                 className="text-white hover:text-accent transition"
               >
-                Testimonials
+                {t.nav.testimonials}
               </Link>
             </li>
             <li>
@@ -123,7 +134,7 @@ const Header = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Download
+                {t.nav.download}
               </motion.a>
             </li>
           </ul>
@@ -147,7 +158,7 @@ const Header = () => {
                   className="text-white hover:text-accent transition block py-2"
                   onClick={toggleMobileMenu}
                 >
-                  Features
+                  {t.nav.features}
                 </Link>
               </li>
               <li>
@@ -156,7 +167,7 @@ const Header = () => {
                   className="text-white hover:text-accent transition block py-2"
                   onClick={toggleMobileMenu}
                 >
-                  Screenshots
+                  {t.nav.screenshots}
                 </Link>
               </li>
               <li>
@@ -165,7 +176,7 @@ const Header = () => {
                   className="text-white hover:text-accent transition block py-2"
                   onClick={toggleMobileMenu}
                 >
-                  Testimonials
+                  {t.nav.testimonials}
                 </Link>
               </li>
               <li className="pt-2">
@@ -174,7 +185,7 @@ const Header = () => {
                   className="bg-gradient-to-r from-accent to-accent-dark hover:from-accent-dark hover:to-accent-dark text-white px-4 py-2 rounded-lg font-semibold transition-colors block text-center"
                   onClick={toggleMobileMenu}
                 >
-                  Download
+                  {t.nav.download}
                 </Link>
               </li>
               <li className="pt-4 border-t border-gray-800 mt-4">
@@ -184,15 +195,31 @@ const Header = () => {
                     className="text-white hover:text-accent transition mr-2"
                     onClick={toggleMobileMenu}
                   >
-                    PT
+                    {t.language.pt}
                   </Link>
-                  <span className="text-gray-400">|</span>
+                  <span className="text-gray-400">{t.language.separator}</span>
                   <Link
                     href="/en"
+                    className="text-accent transition mx-2"
+                    onClick={toggleMobileMenu}
+                  >
+                    {t.language.en}
+                  </Link>
+                  <span className="text-gray-400">{t.language.separator}</span>
+                  <Link
+                    href="/es"
+                    className="text-accent transition mx-2"
+                    onClick={toggleMobileMenu}
+                  >
+                    {t.language.es}
+                  </Link>
+                  <span className="text-gray-400">{t.language.separator}</span>
+                  <Link
+                    href="/zh"
                     className="text-accent transition ml-2"
                     onClick={toggleMobileMenu}
                   >
-                    EN
+                    {t.language.zh}
                   </Link>
                 </div>
               </li>

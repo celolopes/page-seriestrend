@@ -86,8 +86,8 @@ const Screenshots = () => {
   const { translations, language } = useLanguage();
   const t = translations.screenshots;
 
-  // Escolhe os screenshots baseado no idioma atual
-  const screenshots = language === "en" ? screenshotsEn : screenshotsPt;
+  // Usa lista de screenshots do contexto se existir
+  const screenshots = t.list || screenshotsPt;
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -109,7 +109,6 @@ const Screenshots = () => {
     setIsPaused(!isPaused);
   };
 
-  // Configurar o autoplay com intervalo de 5 segundos
   useEffect(() => {
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
@@ -126,13 +125,12 @@ const Screenshots = () => {
   }, [isPaused, activeIndex]);
 
   // Textos com base no idioma para botões de controle
-  const prevButtonLabel =
-    language === "en" ? "Previous image" : "Imagem anterior";
-  const nextButtonLabel = language === "en" ? "Next image" : "Próxima imagem";
-  const pauseLabel = language === "en" ? "Pause" : "Pausar";
-  const playLabel = language === "en" ? "Play" : "Reproduzir";
-  const viewImageLabel = (index: number) =>
-    language === "en" ? `View image ${index + 1}` : `Ver imagem ${index + 1}`;
+  const prevButtonLabel = t.prev || "Imagem anterior";
+  const nextButtonLabel = t.next || "Próxima imagem";
+  const pauseLabel = t.pause || "Pausar";
+  const playLabel = t.play || "Reproduzir";
+  const viewImageLabel =
+    t.viewImage || ((index: number) => `Ver imagem ${index + 1}`);
 
   // ID da seção baseado no idioma
   const sectionId = language === "en" ? "screenshots" : "prints";
@@ -253,7 +251,7 @@ const Screenshots = () => {
 
               {/* Dots */}
               <div className="flex justify-center md:justify-start gap-2 mt-6">
-                {screenshots.map((_, index) => (
+                {screenshots.map((_: unknown, index: number) => (
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}

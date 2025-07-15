@@ -5,6 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://seriestrend.vercel.app"),
   title: "SeriesTrend - Acompanhe as Tendências de Séries",
   description:
     "SeriesTrend - O aplicativo essencial para acompanhar as tendências de séries mais assistidas na semana e no dia.",
@@ -48,14 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
-      <head>
-        {/* Favicon padrão para compatibilidade geral */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* Favicon SVG para navegadores modernos */}
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      </head>
-      <body className={`${inter.className} antialiased`}>
+    <html lang="pt-BR">
+      <body>
         {/* Google tag (gtag.js) - Adicionado para Google Analytics */}
         <script
           async

@@ -77,15 +77,16 @@ const Features = () => {
   const { translations, language } = useLanguage();
   const t = translations.features;
 
-  // Se o idioma for inglês e houver itens de recursos traduzidos, use-os
-  // Caso contrário, use os recursos padrão
-  const features =
-    language === "en" && translations.features.items
-      ? translations.features.items
-      : defaultFeatures;
-
-  // ID da seção baseado no idioma
-  const sectionId = language === "en" ? "features" : "recursos";
+  // Usa features do contexto para todos os idiomas
+  const features = t.items || defaultFeatures;
+  const sectionId =
+    language === "en"
+      ? "features"
+      : language === "es"
+      ? "caracteristicas"
+      : language === "zh"
+      ? "功能特色"
+      : "recursos";
 
   return (
     <section id={sectionId} className="py-20 bg-app-blue/5">
@@ -98,9 +99,15 @@ const Features = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {language === "en" ? "What Series" : "O que o Series"}
+            {t.title || (language === "en" ? "What Series" : "O que o Series")}
             <span className="text-accent">Trend</span>{" "}
-            {language === "en" ? "Offers" : "oferece"}
+            {language === "en"
+              ? "Offers"
+              : language === "es"
+              ? "ofrece"
+              : language === "zh"
+              ? "提供什麼"
+              : "oferece"}
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
             {t.subtitle ||
@@ -109,7 +116,7 @@ const Features = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature: Feature, index: number) => (
+          {features.map((feature: any, index: number) => (
             <motion.div
               key={index}
               className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-gray-100"

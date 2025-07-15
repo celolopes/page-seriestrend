@@ -10,40 +10,17 @@ const Download = () => {
   const t = translations.download;
 
   // Lista de recursos disponíveis no aplicativo com base no idioma
-  const features =
-    language === "en"
-      ? [
-          "Daily and weekly rankings",
-          "Detailed popularity statistics",
-          "Trend notifications",
-          "Episode releases",
-          "Integration with your favorite platforms",
-        ]
-      : [
-          "Rankings diários e semanais",
-          "Estatísticas detalhadas de popularidade",
-          "Notificações de tendências",
-          "Lançamentos de episódios",
-          "Integração com suas plataformas favoritas",
-        ];
+  const features = t.features || [];
 
   // Textos para componentes específicos
   const deviceRequirements =
-    language === "en"
-      ? "Available for iOS 12.0+ and Android 8.0+"
-      : "Disponível para iOS 12.0+ e Android 8.0+";
+    t.deviceRequirements || "Disponível para iOS 12.0+ e Android 8.0+";
   const freeWithInAppPurchases =
-    language === "en"
-      ? "Available as a free download with optional in-app purchases."
-      : "Disponível para download gratuito com compras no aplicativo opcionais.";
+    t.freeWithInAppPurchases ||
+    "Disponível para download gratuito com compras no aplicativo opcionais.";
   const appFeatureTitle =
-    language === "en"
-      ? "Everything you need to know about your series"
-      : "Tudo que você precisa saber sobre suas séries";
-  const backToHome =
-    language === "en"
-      ? "← Back to home page"
-      : "← Voltar para a página inicial";
+    t.appFeatureTitle || "Tudo que você precisa saber sobre suas séries";
+  const backToHome = t.backToHome || "← Voltar para a página inicial";
 
   return (
     <section
@@ -61,7 +38,13 @@ const Download = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {t.title || "Baixe o Series"}
             <span className="text-accent">Trend</span>{" "}
-            {language === "en" ? "now" : "agora"}
+            {language === "en"
+              ? "now"
+              : language === "es"
+              ? "ahora"
+              : language === "zh"
+              ? "立即"
+              : "agora"}
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
             {t.subtitle ||
@@ -84,7 +67,7 @@ const Download = () => {
                 {appFeatureTitle}
               </h3>
               <ul className="space-y-3 mb-6">
-                {features.map((item, index) => (
+                {features.map((item: string, index: number) => (
                   <li key={index} className="flex items-center text-white">
                     <span className="mr-2 text-accent">✓</span>
                     {item}
@@ -115,12 +98,7 @@ const Download = () => {
               <div className="relative overflow-hidden rounded-xl shadow-lg">
                 <Image
                   src="/images/google-play-badge.png"
-                  alt={
-                    t.googlePlay ||
-                    (language === "en"
-                      ? "Get it on Google Play"
-                      : "Disponível no Google Play")
-                  }
+                  alt={t.googlePlay || "Disponível no Google Play"}
                   width={200}
                   height={60}
                   className="h-auto"
@@ -140,12 +118,7 @@ const Download = () => {
                 <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <Image
                     src="/images/app-store-badge.png"
-                    alt={
-                      t.appStore ||
-                      (language === "en"
-                        ? "Download on the App Store"
-                        : "Baixar na App Store")
-                    }
+                    alt={t.appStore || "Baixar na App Store"}
                     width={200}
                     height={60}
                     className="h-auto"

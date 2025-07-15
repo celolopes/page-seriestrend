@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
-  const { translations } = useLanguage();
+  const { translations, language } = useLanguage();
   const t = translations.hero;
 
   return (

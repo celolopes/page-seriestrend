@@ -6,38 +6,38 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://seriestrend.vercel.app"),
-  title: "SeriesTrend - Track What's Trending",
+  title: "SeriesTrend - Sigue las tendencias de series",
   description:
-    "The essential app to track the most watched TV series trends of the week and day",
+    "La app esencial para seguir las tendencias de series más vistas de la semana y el día",
   keywords: [
-    "series tracker",
-    "tv shows",
-    "trending series",
-    "tv series app",
-    "entertainment app",
+    "seguimiento de series",
+    "series de televisión",
+    "series en tendencia",
+    "app de series",
+    "app de entretenimiento",
   ],
   openGraph: {
-    title: "SeriesTrend - Track What's Trending",
+    title: "SeriesTrend - Sigue las tendencias de series",
     description:
-      "The essential app to track the most watched TV series trends of the week and day",
-    url: "https://seriestrend.vercel.app/en",
+      "La app esencial para seguir las tendencias de series más vistas de la semana y el día",
+    url: "https://seriestrend.vercel.app/es",
     siteName: "SeriesTrend",
     images: [
       {
         url: "https://seriestrend.vercel.app/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "SeriesTrend App Preview",
+        alt: "Vista previa de la app SeriesTrend",
       },
     ],
-    locale: "en_US",
+    locale: "es_ES",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SeriesTrend - Track What's Trending",
+    title: "SeriesTrend - Sigue las tendencias de series",
     description:
-      "The essential app to track the most watched TV series trends of the week and day",
+      "La app esencial para seguir las tendencias de series más vistas de la semana y el día",
     images: ["https://seriestrend.vercel.app/images/og-image.jpg"],
   },
 };

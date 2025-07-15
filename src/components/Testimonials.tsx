@@ -84,14 +84,12 @@ const Testimonials = () => {
   const { translations, language } = useLanguage();
   const t = translations.testimonials;
 
-  // Escolhe os depoimentos baseado no idioma atual
-  const testimonials = language === "en" ? testimonialsEn : testimonialsPt;
-
-  // Texto do botão de chamada à ação
-  const ctaButtonText = language === "en" ? "Try It Now" : "Experimente Agora";
-
-  // ID da seção baseado no idioma
-  const sectionId = language === "en" ? "testimonials" : "depoimentos";
+  // Usa depoimentos do contexto para todos os idiomas
+  const testimonials = t.list || testimonialsPt;
+  const ctaButtonText =
+    t.ctaButton || (language === "en" ? "Try It Now" : "Experimente Agora");
+  const sectionId =
+    t.sectionId || (language === "en" ? "testimonials" : "depoimentos");
 
   return (
     <section id={sectionId} className="py-20 bg-app-blue text-white">
@@ -105,9 +103,11 @@ const Testimonials = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {t.title || "O que nossos"}{" "}
-            <span className="text-accent">
-              {language === "en" ? "users" : "usuários"}
-            </span>{" "}
+            {language === "en" ? (
+              <span className="text-accent">users</span>
+            ) : (
+              <span className="text-accent">usuários</span>
+            )}{" "}
             {language === "en" ? "say" : "dizem"}
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
@@ -117,7 +117,7 @@ const Testimonials = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial: any, index: number) => (
             <motion.div
               key={index}
               className="bg-app-dark p-6 rounded-xl border border-gray-800"
