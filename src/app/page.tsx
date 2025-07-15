@@ -1,5 +1,6 @@
 import React from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 // Componentes
 import Header from "@/components/Header";
@@ -21,6 +22,8 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <SpeedInsights />
+      {/* Adicionado Analytics para análise de acessos com Vercel */}
+      <Analytics />
       <LanguageProvider language="pt-BR">
         <Header />
         <Hero />
