@@ -12,33 +12,14 @@ import {
   NewspaperIcon,
 } from "lucide-react";
 
-// Animação para os cards
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (custom: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.1 * custom,
-      duration: 0.5,
-    },
-  }),
-};
-
 const featureIcons = [
-  <TrendingUp key="trending" className="h-10 w-10 text-accent" />,
-  <NewspaperIcon key="newspaper" className="h-10 w-10 text-accent" />,
-  <Bell key="bell" className="h-10 w-10 text-accent" />,
-  <Search key="search" className="h-10 w-10 text-accent" />,
-  <Calendar key="calendar" className="h-10 w-10 text-accent" />,
-  <Bookmark key="bookmark" className="h-10 w-10 text-accent" />,
+  <TrendingUp key="trending" className="h-8 w-8 text-primary" />,
+  <NewspaperIcon key="newspaper" className="h-8 w-8 text-primary" />,
+  <Bell key="bell" className="h-8 w-8 text-primary" />,
+  <Search key="search" className="h-8 w-8 text-primary" />,
+  <Calendar key="calendar" className="h-8 w-8 text-primary" />,
+  <Bookmark key="bookmark" className="h-8 w-8 text-primary" />,
 ];
-
-// Definindo a interface para o objeto feature
-interface Feature {
-  title: string;
-  description: string;
-}
 
 const defaultFeatures = [
   {
@@ -47,9 +28,9 @@ const defaultFeatures = [
       "Veja quais séries estão bombando no momento, com rankings diários e semanais atualizados em tempo real.",
   },
   {
-    title: "Curiosidades de Séries através de IA",
+    title: "Curiosidades com IA",
     description:
-      "Acesse curiosidades das suas séries favoritas através de IA, trazendo informações de bastidores e detalhes sobre temporadas e episódios que foram e estão sendo exibidos no momento.",
+      "Acesse curiosidades das suas séries favoritas através de IA, trazendo informações de bastidores e detalhes exclusivos.",
   },
   {
     title: "Notificações",
@@ -62,7 +43,7 @@ const defaultFeatures = [
       "Encontre rapidamente séries por título, gênero, plataforma ou popularidade com filtros específicos.",
   },
   {
-    title: "Calendário de Lançamentos",
+    title: "Calendário",
     description:
       "Mantenha-se atualizado com as datas de lançamento dos próximos episódios de suas séries favoritas.",
   },
@@ -76,61 +57,51 @@ const defaultFeatures = [
 const Features = () => {
   const { translations, language } = useLanguage();
   const t = translations.features;
-
-  // Usa features do contexto para todos os idiomas
   const features = t.items || defaultFeatures;
-  const sectionId =
-    language === "en"
-      ? "features"
-      : language === "es"
-      ? "caracteristicas"
-      : language === "zh"
-      ? "功能特色"
-      : "recursos";
+  const sectionId = "recursos";
 
   return (
-    <section id={sectionId} className="py-20 bg-app-blue/5">
+    <section id={sectionId} className="py-24 relative">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-[600px] bg-primary/5 rounded-full blur-3xl -z-10" />
+
       <div className="container mx-auto px-4">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t.title || (language === "en" ? "What Series" : "O que o Series")}
-            <span className="text-accent">Trend</span>{" "}
-            {language === "en"
-              ? "Offers"
-              : language === "es"
-              ? "ofrece"
-              : language === "zh"
-              ? "提供什麼"
-              : "oferece"}
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            {t.title} <span className="text-primary">SeriesTrend</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             {t.subtitle ||
               "Descubra todas as ferramentas e recursos que vão transformar a maneira como você acompanha suas séries favoritas."}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature: any, index: number) => (
             <motion.div
               key={index}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-gray-100"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
+              className="glass-card p-8 rounded-2xl hover:border-primary/30 transition-all duration-300 group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              custom={index}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
             >
-              <div className="mb-4">{featureIcons[index]}</div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">
+              <div className="mb-6 p-3 bg-primary/10 rounded-xl w-fit group-hover:bg-primary/20 transition-colors">
+                {featureIcons[index]}
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-slate-500">{feature.description}</p>
+              <p className="text-gray-400 leading-relaxed">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </div>

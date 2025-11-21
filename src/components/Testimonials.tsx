@@ -2,21 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-// Animação para os cards
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: (custom: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.1 * custom,
-      duration: 0.4,
-    },
-  }),
-};
 
 const testimonialsPt = [
   {
@@ -49,85 +36,49 @@ const testimonialsPt = [
   },
 ];
 
-const testimonialsEn = [
-  {
-    name: "Anna Smith",
-    role: "Movie Enthusiast",
-    stars: 5,
-    content:
-      "SeriesTrend has revolutionized the way I keep track of my series. I can stay on top of all trends quickly and intuitively. Highly recommended!",
-  },
-  {
-    name: "Robert Johnson",
-    role: "Series Critic",
-    stars: 5,
-    content:
-      "As a critic, I value accurate data on what's trending. SeriesTrend gives me exactly that, with a clean and efficient interface.",
-  },
-  {
-    name: "Julie Sanders",
-    role: "Digital Influencer",
-    stars: 4,
-    content:
-      "I use SeriesTrend daily to stay updated on what's hot. The trend analysis is perfect for recommending content to my followers!",
-  },
-  {
-    name: "Peter Miller",
-    role: "Streaming Enthusiast",
-    stars: 5,
-    content:
-      "Finally an app that helps me decide what to watch based on real data, not just recommendation algorithms. Simply essential!",
-  },
-];
-
 const Testimonials = () => {
   const { translations, language } = useLanguage();
   const t = translations.testimonials;
-
-  // Usa depoimentos do contexto para todos os idiomas
   const testimonials = t.list || testimonialsPt;
-  const ctaButtonText =
-    t.ctaButton || (language === "en" ? "Try It Now" : "Experimente Agora");
   const sectionId =
     t.sectionId || (language === "en" ? "testimonials" : "depoimentos");
 
   return (
-    <section id={sectionId} className="py-20 bg-app-blue text-white">
+    <section id={sectionId} className="py-24 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent -z-10" />
+
       <div className="container mx-auto px-4">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t.title || "O que nossos"}{" "}
-            {language === "en" ? (
-              <span className="text-accent">users</span>
-            ) : (
-              <span className="text-accent">usuários</span>
-            )}{" "}
-            {language === "en" ? "say" : "dizem"}
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            {t.title} <span className="text-primary">SeriesTrend</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             {t.subtitle ||
               "Veja por que mais de 10.000 pessoas já confiam no SeriesTrend para acompanhar suas séries favoritas."}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial: any, index: number) => (
             <motion.div
               key={index}
-              className="bg-app-dark p-6 rounded-xl border border-gray-800"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
+              className="glass-card p-8 rounded-2xl relative group hover:border-primary/30 transition-all"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              custom={index}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
             >
-              <div className="flex mb-4">
+              <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/20 group-hover:text-primary/40 transition-colors" />
+              
+              <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
@@ -139,35 +90,22 @@ const Testimonials = () => {
                   />
                 ))}
               </div>
-              <p className="text-gray-300 mb-6 italic">
+              
+              <p className="text-gray-300 mb-8 text-lg leading-relaxed italic">
                 &ldquo;{testimonial.content}&rdquo;
               </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gradient-to-br from-accent to-accent-dark rounded-full flex items-center justify-center text-white font-bold">
+              
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                   {testimonial.name.charAt(0)}
                 </div>
-                <div className="ml-3">
-                  <h4 className="font-semibold">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-400">{testimonial.role}</p>
+                <div>
+                  <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
+                  <p className="text-sm text-primary">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <motion.div
-            className="inline-block"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <a
-              href="#download"
-              className="bg-gradient-to-r from-accent to-accent-dark hover:from-accent-dark hover:to-accent-dark text-white px-6 py-3 rounded-lg font-semibold text-lg inline-block"
-            >
-              {ctaButtonText}
-            </a>
-          </motion.div>
         </div>
       </div>
     </section>

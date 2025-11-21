@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -38,55 +38,15 @@ const screenshotsPt = [
   {
     src: "/images/screenshot-5.png",
     alt: "Curiosidades sobre a série",
-    title: "Curiosidades sobre a série",
+    title: "Curiosidades com IA",
     description:
       "Veja curiosidades sobre a série, incluindo curiosidades sobre os personagens, bastidores e o elenco através da IA.",
-  },
-];
-
-const screenshotsEn = [
-  {
-    src: "/images/screenshot-1.png",
-    alt: "Trending series list",
-    title: "Trending List",
-    description:
-      "See the most popular series at the moment, organized by relevance.",
-  },
-  {
-    src: "/images/screenshot-3.png",
-    alt: "Series details",
-    title: "Series Details",
-    description:
-      "Access detailed information about each series, including ratings and statistics.",
-  },
-  {
-    src: "/images/screenshot-2.png",
-    alt: "Series search and suggestions",
-    title: "Series Search and Suggestions",
-    description:
-      "Find series quickly with smart search and get personalized suggestions of trending series.",
-  },
-  {
-    src: "/images/screenshot-4.png",
-    alt: "Custom series list",
-    title: "Custom List",
-    description:
-      "Organize your favorite series in custom lists to track your progress.",
-  },
-  {
-    src: "/images/screenshot-5.png",
-    alt: "Series trivia",
-    title: "Series Trivia",
-    description:
-      "See fun facts about the series, including character trivia, behind the scenes and cast information through AI.",
   },
 ];
 
 const Screenshots = () => {
   const { translations, language } = useLanguage();
   const t = translations.screenshots;
-
-  // Usa lista de screenshots do contexto se existir
   const screenshots = t.list || screenshotsPt;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -115,7 +75,6 @@ const Screenshots = () => {
         nextSlide();
       }, 5000);
     }
-
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -124,145 +83,118 @@ const Screenshots = () => {
     };
   }, [isPaused, activeIndex]);
 
-  // Textos com base no idioma para botões de controle
-  const prevButtonLabel = t.prev || "Imagem anterior";
-  const nextButtonLabel = t.next || "Próxima imagem";
-  const pauseLabel = t.pause || "Pausar";
-  const playLabel = t.play || "Reproduzir";
-  const viewImageLabel =
-    t.viewImage || ((index: number) => `Ver imagem ${index + 1}`);
-
-  // ID da seção baseado no idioma
   const sectionId = language === "en" ? "screenshots" : "prints";
 
   return (
-    <section id={sectionId} className="py-20 bg-app-dark text-white">
-      <div className="container mx-auto px-4">
+    <section id={sectionId} className="py-24 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-app-dark/50 pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t.title || "Conheça o Series"}
-            <span className="text-accent">Trend</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            {t.title} <span className="text-primary">SeriesTrend</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             {t.subtitle ||
               "Veja como é fácil e intuitivo acompanhar as tendências de séries com nosso aplicativo."}
           </p>
         </motion.div>
 
-        <div className="relative max-w-5xl mx-auto">
-          {/* Carousel Controls */}
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 z-10 md:block hidden">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
+          {/* Phone Frame */}
+          <div className="relative w-[300px] h-[600px] flex-shrink-0">
+            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full -z-10" />
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={screenshots[activeIndex].src}
+                alt={screenshots[activeIndex].alt}
+                fill
+                className="object-contain drop-shadow-2xl z-10"
+              />
+            </motion.div>
+            
+            {/* Navigation Buttons (Desktop) */}
             <button
               onClick={prevSlide}
-              className="bg-app-blue/70 hover:bg-accent text-white p-3 rounded-full transition-colors"
-              aria-label={prevButtonLabel}
+              className="absolute top-1/2 -left-16 -translate-y-1/2 p-3 rounded-full glass hover:bg-white/10 text-white transition-all hidden lg:block"
             >
               <ChevronLeft size={24} />
             </button>
-          </div>
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 z-10 md:block hidden">
             <button
               onClick={nextSlide}
-              className="bg-app-blue/70 hover:bg-accent text-white p-3 rounded-full transition-colors"
-              aria-label={nextButtonLabel}
+              className="absolute top-1/2 -right-16 -translate-y-1/2 p-3 rounded-full glass hover:bg-white/10 text-white transition-all hidden lg:block"
             >
               <ChevronRight size={24} />
             </button>
           </div>
 
-          {/* Pause/Play Button */}
-          <div className="absolute top-0 right-0 z-10">
-            <button
-              onClick={togglePause}
-              className="bg-app-blue/70 hover:bg-accent text-white p-2 rounded-full transition-colors"
-              aria-label={isPaused ? playLabel : pauseLabel}
-            >
-              {isPaused ? <Play size={18} /> : <Pause size={18} />}
-            </button>
-          </div>
+          {/* Content */}
+          <div className="max-w-lg text-center lg:text-left">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  {screenshots[activeIndex].title}
+                </h3>
+                <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                  {screenshots[activeIndex].description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
-          {/* Carousel */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <motion.div
-              className="w-full md:w-1/2 flex justify-center"
-              key={activeIndex}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="relative h-[600px] w-[300px]">
-                <div className="absolute -top-4 -left-4 bg-accent/20 w-24 h-24 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-4 -right-4 bg-accent/20 w-24 h-24 rounded-full blur-3xl"></div>
-                <Image
-                  src={screenshots[activeIndex].src}
-                  alt={screenshots[activeIndex].alt}
-                  fill
-                  className="object-contain drop-shadow-2xl"
+            {/* Progress Indicators */}
+            <div className="flex justify-center lg:justify-start gap-3 mb-8">
+              {screenshots.map((_: any, index: number) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === activeIndex ? "w-8 bg-primary" : "w-2 bg-white/20 hover:bg-white/40"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
-              </div>
-            </motion.div>
+              ))}
+            </div>
 
-            <motion.div
-              className="w-full md:w-1/2 text-center md:text-left"
-              key={`text-${activeIndex}`}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-2xl font-bold text-accent mb-4">
-                {screenshots[activeIndex].title}
-              </h3>
-              <p className="text-xl text-gray-300 mb-8">
-                {screenshots[activeIndex].description}
-              </p>
-
-              {/* Mobile Controls */}
-              <div className="flex justify-center gap-4 md:hidden">
-                <button
-                  onClick={prevSlide}
-                  className="bg-app-blue hover:bg-accent text-white p-3 rounded-full transition-colors"
-                  aria-label={prevButtonLabel}
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <button
-                  onClick={togglePause}
-                  className="bg-app-blue hover:bg-accent text-white p-3 rounded-full transition-colors"
-                  aria-label={isPaused ? playLabel : pauseLabel}
-                >
-                  {isPaused ? <Play size={24} /> : <Pause size={24} />}
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="bg-app-blue hover:bg-accent text-white p-3 rounded-full transition-colors"
-                  aria-label={nextButtonLabel}
-                >
-                  <ChevronRight size={24} />
-                </button>
-              </div>
-
-              {/* Dots */}
-              <div className="flex justify-center md:justify-start gap-2 mt-6">
-                {screenshots.map((_: unknown, index: number) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === activeIndex ? "bg-accent" : "bg-gray-500"
-                    }`}
-                    aria-label={viewImageLabel(index)}
-                  />
-                ))}
-              </div>
-            </motion.div>
+            {/* Mobile Controls */}
+            <div className="flex justify-center gap-4 lg:hidden">
+              <button
+                onClick={prevSlide}
+                className="p-3 rounded-full glass hover:bg-white/10 text-white transition-all"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={togglePause}
+                className="p-3 rounded-full glass hover:bg-white/10 text-white transition-all"
+              >
+                {isPaused ? <Play size={24} /> : <Pause size={24} />}
+              </button>
+              <button
+                onClick={nextSlide}
+                className="p-3 rounded-full glass hover:bg-white/10 text-white transition-all"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
