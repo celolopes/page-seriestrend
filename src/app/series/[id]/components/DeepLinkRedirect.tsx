@@ -7,13 +7,19 @@ export default function DeepLinkRedirect({ seriesId }: { seriesId: string }) {
     // Attempt to open the custom URL scheme
     const deepLink = `seriestrend://series/${seriesId}`;
 
-    // Intentional delay to avoid "TLS Error" or "Connection Failed" on some mobile browsers (like Arc Search)
-    // that might abort the page load if a custom protocol redirect happens instantly.
-    const timer = setTimeout(() => {
-      window.location.href = deepLink;
-    }, 2000);
+    const handleRedirect = () => {
+      // Intentional short delay even after load to allow UI to settle
+      setTimeout(() => {
+        window.location.href = deepLink;
+      }, 1000);
+    };
 
-    return () => clearTimeout(timer); // Cleanup
+    if (document.readyState === "complete") {
+      handleRedirect();
+    } else {
+      window.addEventListener("load", handleRedirect);
+      return () => window.removeEventListener("load", handleRedirect);
+    }
   }, [seriesId]);
 
   return null;
