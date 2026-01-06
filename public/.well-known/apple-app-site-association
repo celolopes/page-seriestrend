@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "985VL34R9B.com.celolopes.seriestrend",
+        "paths": [
+          "/series/*"
+        ]
+      }
+    ]
+  }
+}
