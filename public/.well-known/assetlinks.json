@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.celolopes.seriestrend",
+      "sha256_cert_fingerprints": ["CC:2A:D1:91:9A:3D:CB:2C:AD:93:86:A5:34:88:D9:C8:53:CC:60:EA:7F:9F:B7:35:42:FB:73:18:23:CF:0E:8F"]
+    }
+  }
+]
