@@ -160,19 +160,29 @@ export default async function SeriesDeepLinkPage(props: { params: Promise<{ id: 
             </svg>
           </Link>
 
-          {/* Store Buttons (Visual Only placeholders as requested, or pointing to stores) */}
+          {/* Store Buttons */}
           <div className="grid grid-cols-2 gap-3 w-full opacity-80">
-            {/* App Store Placeholder */}
-            <button className="flex flex-col items-center justify-center bg-black/40 hover:bg-black/60 p-3 rounded-xl transition-colors border border-white/5">
+            {/* App Store */}
+            <Link
+              href="https://apps.apple.com/br/app/seriestrend/id6746804882"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center bg-black/40 hover:bg-black/60 p-3 rounded-xl transition-colors border border-white/5"
+            >
               <span className="text-[10px] text-gray-400 uppercase tracking-wider">Download on the</span>
               <span className="font-semibold">App Store</span>
-            </button>
+            </Link>
 
-            {/* Play Store Placeholder */}
-            <button className="flex flex-col items-center justify-center bg-black/40 hover:bg-black/60 p-3 rounded-xl transition-colors border border-white/5">
+            {/* Play Store */}
+            <Link
+              href="https://play.google.com/store/apps/details?id=com.celolopes.seriestrend"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center bg-black/40 hover:bg-black/60 p-3 rounded-xl transition-colors border border-white/5"
+            >
               <span className="text-[10px] text-gray-400 uppercase tracking-wider">Get it on</span>
               <span className="font-semibold">Google Play</span>
-            </button>
+            </Link>
           </div>
         </div>
 
