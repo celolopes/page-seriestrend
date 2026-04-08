@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Términos de uso de la app SeriesTrend - Reglas y condiciones para el uso del servicio",
 };
 
+const LAST_UPDATED = "08/04/2026";
+
 export default function TermsOfService() {
   return (
     <main className="pt-28 pb-16 min-h-screen">
@@ -26,7 +28,7 @@ export default function TermsOfService() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-500 mb-8 text-center">
-              Última actualización: {new Date().toLocaleDateString("es-ES")}
+              Última actualización: {LAST_UPDATED}
             </p>
             {/* Aquí va el contenido completo de los términos de uso, traducido del inglés */}
             {/* ...Contenido traducido omitido para brevedad... */}

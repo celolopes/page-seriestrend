@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "SeriesTrend 應用程式使用條款 - 服務使用規則與條件",
 };
 
+const LAST_UPDATED = "2026/04/08";
+
 export default function TermsOfService() {
   return (
     <main className="pt-28 pb-16 min-h-screen">
@@ -25,7 +27,7 @@ export default function TermsOfService() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-500 mb-8 text-center">
-              最後更新：{new Date().toLocaleDateString("zh-TW")}
+              最後更新：{LAST_UPDATED}
             </p>
             {/* 這裡插入完整的使用條款內容，翻譯自英文版 */}
             {/* ...Conteúdo traduzido omitido para brevidade... */}

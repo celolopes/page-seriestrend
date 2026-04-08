@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Terms of Use for the SeriesTrend app - Rules and conditions for using the service",
 };
 
+const LAST_UPDATED = "April 8, 2026";
+
 export default function TermsOfService() {
   return (
     <main className="pt-28 pb-16 min-h-screen">
@@ -26,7 +28,7 @@ export default function TermsOfService() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-500 mb-8 text-center">
-              Last updated: {new Date().toLocaleDateString("en-US")}
+              Last updated: {LAST_UPDATED}
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">
@@ -99,6 +101,25 @@ export default function TermsOfService() {
                 Notify us immediately of any unauthorized use of your account.
               </li>
             </ul>
+            <p>
+              If you choose to authenticate or connect your Trakt.tv account to
+              the Application, certain social and community features of
+              SeriesTrend may depend on identifying that account with the
+              Application's official community on Trakt.tv.
+            </p>
+            <p>
+              To enable such features, upon completion of the authentication or
+              connection of your Trakt.tv account, SeriesTrend may automatically
+              follow the official <strong>@SeriesTrend</strong> account on
+              Trakt.tv on your behalf.
+            </p>
+            <p>
+              You may unfollow the official <strong>@SeriesTrend</strong>{" "}
+              account at any time directly on Trakt.tv. However, removing this
+              connection may limit, disable, or otherwise affect social,
+              community, or network features of the Application that depend on
+              such identification.
+            </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">
               5. Intellectual Property
