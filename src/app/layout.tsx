@@ -6,21 +6,23 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://seriestrend.vercel.app"),
-  title: "SeriesTrend - Acompanhe as Tendências de Séries",
+  title: "SeriesTrend - Descubra Séries e Conecte-se",
   description:
-    "SeriesTrend - O aplicativo essencial para acompanhar as tendências de séries mais assistidas na semana e no dia.",
+    "SeriesTrend - Acompanhe suas séries, veja o que seus amigos estão assistindo, compartilhe recomendações e conquiste badges na sua rede social de séries.",
   keywords: [
     "séries",
-    "tendências",
-    "aplicativo",
+    "rede social",
+    "amigos",
     "streaming",
     "rastreamento",
-    "séries populares",
+    "trakt",
+    "badges",
+    "comunidade",
   ],
   openGraph: {
-    title: "SeriesTrend - Acompanhe as Tendências de Séries",
+    title: "SeriesTrend - Descubra Séries e Conecte-se",
     description:
-      "O aplicativo essencial para acompanhar as tendências de séries mais assistidas na semana e no dia.",
+      "Acompanhe suas séries, veja o que seus amigos estão assistindo, compartilhe recomendações e conquiste badges na sua rede social de séries.",
     url: "https://seriestrend.vercel.app",
     siteName: "SeriesTrend",
     images: [
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "SeriesTrend - Acompanhe as Tendências de Séries",
+        alt: "SeriesTrend - Descubra Séries e Conecte-se",
       },
     ],
     locale: "pt_BR",
@@ -36,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SeriesTrend - Acompanhe as Tendências de Séries",
+    title: "SeriesTrend - Descubra Séries e Conecte-se",
     description:
-      "O aplicativo essencial para acompanhar as tendências de séries mais assistidas na semana e no dia.",
+      "Acompanhe suas séries, veja o que seus amigos estão assistindo, compartilhe recomendações e conquiste badges na sua rede social de séries.",
     images: ["/images/og-image.jpg"],
   },
 };

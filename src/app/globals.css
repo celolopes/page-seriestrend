@@ -98,3 +98,22 @@ body {
 .bg-gradient-primary {
   background: linear-gradient(135deg, rgb(var(--primary-rgb)), rgb(var(--primary-dark-rgb)));
 }
+
+/* Social Section Accent */
+.text-gradient-social {
+  background: linear-gradient(to right, rgb(var(--primary-rgb)), #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-success {
+  background: rgba(34, 197, 94, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.bg-gradient-social {
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), rgba(167, 139, 250, 0.15));
+}
