@@ -13,7 +13,7 @@ const defaultPtTranslations = {
   hero: {
     badge: "#1 REDE SOCIAL PARA SÉRIES",
     title: "Sua nova rede social de",
-    titleHighlight: "Séries",
+    titleHighlight: "tendências de Séries",
     subtitle:
       "Acompanhe suas séries, veja o que seus amigos estão assistindo, conquiste badges e compartilhe sua paixão com a comunidade.",
     ctaButton: "Começar Agora",

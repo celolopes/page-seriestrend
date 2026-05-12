@@ -26,9 +26,18 @@ const Header = () => {
   };
 
   const navItems = [
-    { label: t.header.nav.features, href: "#features" },
-    { label: t.header.nav.screenshots, href: "#screenshots" },
-    { label: t.header.nav.testimonials, href: "#testimonials" },
+    { 
+      label: t.header.nav.features, 
+      href: language === "en" ? "#features" : "#recursos" 
+    },
+    { 
+      label: t.header.nav.screenshots, 
+      href: language === "en" ? "#screenshots" : "#prints" 
+    },
+    { 
+      label: t.header.nav.testimonials, 
+      href: language === "en" ? "#community" : "#comunidade" 
+    },
   ];
 
   return (

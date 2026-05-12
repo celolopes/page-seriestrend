@@ -58,7 +58,7 @@ const Features = () => {
   const { translations, language } = useLanguage();
   const t = translations.features;
   const features = t.items || defaultFeatures;
-  const sectionId = "recursos";
+  const sectionId = language === "en" ? "features" : "recursos";
 
   return (
     <section id={sectionId} className="py-24 relative">
