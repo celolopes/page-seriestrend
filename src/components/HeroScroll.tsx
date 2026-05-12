@@ -47,9 +47,9 @@ export default function HeroScroll() {
         <Image
           src="/images/Screenshot-10.png"
           alt="SeriesTrend Social Profile"
-          height={720}
-          width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top shadow-2xl"
+          height={800}
+          width={400}
+          className="mx-auto h-full object-cover shadow-2xl"
           draggable={false}
           priority
         />
