@@ -3,13 +3,15 @@ import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import HeroBackground from "@/components/HeroBackground";
 
 export default function HeroScroll() {
   const { translations } = useLanguage();
   const t = translations.hero;
 
   return (
-    <div className="flex flex-col overflow-hidden bg-black pt-20">
+    <div className="relative flex flex-col overflow-hidden bg-black pt-20 z-0">
+      <HeroBackground />
       <ContainerScroll
         titleComponent={
           <div className="flex flex-col items-center">
