@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
@@ -58,6 +58,13 @@ const SocialShowcase = () => {
       current === 0 ? socialScreenshots.length - 1 : current - 1
     );
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextScreenshot();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [activeScreenshot]);
 
   if (!t) return null;
 
@@ -140,10 +147,10 @@ const SocialShowcase = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="absolute inset-8 bg-primary/20 blur-[120px] rounded-full" />
+            <div className="absolute inset-8 bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="relative mx-auto w-full max-w-[390px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/15 via-primary/5 to-transparent rounded-[3rem] scale-95 blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/15 via-primary/5 to-transparent rounded-[3rem] scale-95 blur-2xl pointer-events-none" />
               <div className="relative rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-3 shadow-[0_35px_120px_rgba(0,0,0,0.55)]">
                 <AnimatePresence mode="wait">
                   <motion.div

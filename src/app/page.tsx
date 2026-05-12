@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 // Componentes
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import HeroScroll from "@/components/HeroScroll";
 import Features from "@/components/Features";
 import SocialShowcase from "@/components/SocialShowcase";
 import Screenshots from "@/components/Screenshots";
@@ -27,7 +27,7 @@ export default function Home() {
       <Analytics />
       <LanguageProvider language="pt-BR">
         <Header />
-        <Hero />
+        <HeroScroll />
         <Features />
         <SocialShowcase />
         <Screenshots />

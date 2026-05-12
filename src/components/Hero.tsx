@@ -96,8 +96,8 @@ const Hero = () => {
             <div className="relative z-10 transform hover:-translate-y-2 transition-transform duration-500">
               <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 rounded-full" />
               <Image
-                src="/images/screenshot-1.png"
-                alt="SeriesTrend App Interface"
+                src="/images/Screenshot-10.png"
+                alt="SeriesTrend Social Profile"
                 width={380}
                 height={760}
                 className="mx-auto drop-shadow-2xl rounded-[3rem] border-8 border-gray-900"
