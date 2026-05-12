@@ -11,38 +11,47 @@ const screenshotsPt = [
     src: "/images/screenshot-1.png",
     alt: "Lista de séries em tendência",
     title: "Lista de Tendências",
-    description:
-      "Veja as séries mais populares do momento, organizadas por relevância.",
+    description: "Veja as séries mais populares do momento, organizadas por relevância.",
   },
   {
     src: "/images/screenshot-3.png",
     alt: "Detalhes da série",
     title: "Detalhes da Série",
-    description:
-      "Acesse informações detalhadas sobre cada série, incluindo avaliações e estatísticas.",
+    description: "Acesse informações detalhadas sobre cada série, incluindo avaliações e estatísticas.",
+  },
+  {
+    src: "/images/Screenshot-8.png",
+    alt: "Dashboard Social",
+    title: "Seu Perfil Social",
+    description: "Gerencie seus amigos, seguidores e suas conquistas.",
+  },
+  {
+    src: "/images/Screenshot-10.png",
+    alt: "Badges",
+    title: "Badges e Gamificação",
+    description: "Ganhe badges exclusivas enquanto assiste suas séries.",
+  },
+  {
+    src: "/images/Screenshot-11.png",
+    alt: "Comparação",
+    title: "Comparação de Amigos",
+    description: "Veja quem assistiu mais episódios este mês.",
   },
   {
     src: "/images/screenshot-2.png",
-    alt: "Busca de séries e sugestões",
-    title: "Busca de Séries e Sugestões",
-    description:
-      "Encontre séries rapidamente com a busca inteligente e receba sugestões personalizadas das séries em tendência.",
+    alt: "Busca de Séries",
+    title: "Busca Completa",
+    description: "Busca completa de séries e diretores de séries.",
   },
   {
     src: "/images/screenshot-4.png",
-    alt: "Lista personalizada de séries",
-    title: "Lista Personalizada",
-    description:
-      "Organize suas séries favoritas em listas personalizadas para acompanhar seu progresso.",
-  },
-  {
-    src: "/images/screenshot-5.png",
-    alt: "Curiosidades sobre a série",
-    title: "Curiosidades com IA",
-    description:
-      "Veja curiosidades sobre a série, incluindo curiosidades sobre os personagens, bastidores e o elenco através da IA.",
+    alt: "Gráficos de Tendências",
+    title: "Gráficos de Tendências",
+    description: "Gráficos das séries e streamings que são tendências.",
   },
 ];
+
+import { IPhoneMockup } from "./ui/iphone-mockup";
 
 const Screenshots = () => {
   const { translations, language } = useLanguage();
@@ -86,9 +95,9 @@ const Screenshots = () => {
   const sectionId = language === "en" ? "screenshots" : "prints";
 
   return (
-    <section id={sectionId} className="py-24 relative overflow-hidden">
+    <section id={sectionId} className="py-24 relative overflow-hidden bg-app-dark">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-app-dark/50 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -107,37 +116,42 @@ const Screenshots = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
-          {/* Phone Frame */}
-          <div className="relative w-[300px] h-[600px] flex-shrink-0">
-            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full -z-10" />
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className="relative w-full h-full"
-            >
-              <Image
-                src={screenshots[activeIndex].src}
-                alt={screenshots[activeIndex].alt}
-                fill
-                className="object-contain drop-shadow-2xl z-10"
-              />
-            </motion.div>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-32">
+          {/* Phone Frame Container */}
+          <div className="relative flex-shrink-0">
+            <IPhoneMockup>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative w-full h-full"
+                >
+                  <Image
+                    src={screenshots[activeIndex].src}
+                    alt={screenshots[activeIndex].alt}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </IPhoneMockup>
             
             {/* Navigation Buttons (Desktop) */}
             <button
               onClick={prevSlide}
-              className="absolute top-1/2 -left-16 -translate-y-1/2 p-3 rounded-full glass hover:bg-white/10 text-white transition-all hidden lg:block"
+              className="absolute top-1/2 -left-20 -translate-y-1/2 p-4 rounded-full glass hover:bg-white/10 text-white transition-all hidden lg:block"
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft size={28} />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute top-1/2 -right-16 -translate-y-1/2 p-3 rounded-full glass hover:bg-white/10 text-white transition-all hidden lg:block"
+              className="absolute top-1/2 -right-20 -translate-y-1/2 p-4 rounded-full glass hover:bg-white/10 text-white transition-all hidden lg:block"
             >
-              <ChevronRight size={24} />
+              <ChevronRight size={28} />
             </button>
           </div>
 
