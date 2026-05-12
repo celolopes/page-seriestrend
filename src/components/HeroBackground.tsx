@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function HeroBackground() {
   // Criamos 3 colunas que se movem em velocidades diferentes para dar profundidade
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden opacity-20 pointer-events-none">
+    <div className="absolute inset-0 z-0 overflow-hidden opacity-40 pointer-events-none">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10" />
       
@@ -34,7 +34,7 @@ export default function HeroBackground() {
                   src="/images/tv-collage.png"
                   alt="Series Background"
                   fill
-                  className="object-cover grayscale brightness-50"
+                  className="object-cover grayscale brightness-80"
                   sizes="256px"
                 />
               </div>
@@ -42,9 +42,6 @@ export default function HeroBackground() {
           </motion.div>
         ))}
       </div>
-      
-      {/* Overlay extra para suavizar */}
-      <div className="absolute inset-0 bg-black/60 z-[5]" />
     </div>
   );
 }
