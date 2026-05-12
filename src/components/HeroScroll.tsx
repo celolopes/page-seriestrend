@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import HeroBackground from "@/components/HeroBackground";
 
 export default function HeroScroll() {
-  const { translations } = useLanguage();
+    const { translations, language } = useLanguage();
   const t = translations.hero;
 
   return (
@@ -17,7 +17,7 @@ export default function HeroScroll() {
           <div className="flex flex-col items-center">
             <div className="inline-block px-4 py-1.5 rounded-full glass border border-primary/30 mb-6">
               <span className="text-primary font-semibold text-sm tracking-wide uppercase">
-                #1 App para Amantes de Séries
+                {t.badge}
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight">
@@ -37,10 +37,10 @@ export default function HeroScroll() {
                 {t.ctaButton}
               </a>
               <a
-                href="#features"
+                href={language === "en" ? "#features" : "#recursos"}
                 className="px-8 py-4 glass text-white rounded-xl font-bold text-lg hover:bg-white/5 transition-colors"
               >
-                Saiba Mais
+                {t.learnMore}
               </a>
             </div>
           </div>

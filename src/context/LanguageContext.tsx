@@ -20,6 +20,7 @@ const defaultPtTranslations = {
     statsUsers: "Membros",
     statsSeries: "Títulos",
     statsRatings: "Avaliação",
+    learnMore: "Saiba Mais",
   },
   features: {
     title: "Por que entrar na",
@@ -29,12 +30,12 @@ const defaultPtTranslations = {
       {
         title: "Feed de Amigos",
         description:
-          "Veja em tempo real o que sua rede está assistindo, avaliando e adicionando à watchlist.",
+          "Veja em tempo real o que sua rede está assistindo, avaliando e adicionando à sua lista.",
       },
       {
         title: "Badges e Conquistas",
         description:
-          "Ganhe medalhas exclusivas ao completar maratones, gêneros específicos ou marcos de episódios assistidos.",
+          "Ganhe medalhas exclusivas ao completar maratonas, gêneros específicos ou marcos de episódios assistidos.",
       },
       {
         title: "Comparação de Perfis",
@@ -44,7 +45,7 @@ const defaultPtTranslations = {
       {
         title: "Sincronização Trakt",
         description:
-          "Integração total com Trakt.tv para manter seu histórico, ratings e listas sempre atualizados e sociais.",
+          "Integração total com Trakt.tv para manter seu histórico, avaliações e listas sempre atualizados e sociais.",
       },
       {
         title: "Reações e Inbox",
@@ -242,6 +243,7 @@ const defaultEnTranslations = {
     statsUsers: "Members",
     statsSeries: "Titles",
     statsRatings: "Rating",
+    learnMore: "Learn More",
   },
   features: {
     title: "Why join",
@@ -464,6 +466,7 @@ const defaultEsTranslations = {
     statsUsers: "Miembros",
     statsSeries: "Títulos",
     statsRatings: "Valoración",
+    learnMore: "Saber Más",
   },
   features: {
     title: "Por qué unirse a",
@@ -488,7 +491,7 @@ const defaultEsTranslations = {
       {
         title: "Sincronización Trakt",
         description:
-          "Integración total con Trakt.tv para mantener tu historial, ratings y listas siempre actualizados.",
+          "Integración total con Trakt.tv para mantener tu historial, valoraciones y listas siempre actualizados.",
       },
       {
         title: "Reacciones e Inbox",
@@ -686,6 +689,7 @@ const defaultZhTranslations = {
     statsUsers: "成員",
     statsSeries: "作品",
     statsRatings: "評分",
+    learnMore: "了解更多",
   },
   features: {
     title: "為什麼加入",

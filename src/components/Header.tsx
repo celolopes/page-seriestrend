@@ -134,7 +134,7 @@ const Header = () => {
 
             <motion.a
               href="#download"
-              className="bg-primary hover:bg-primary-light text-white px-5 py-2 rounded-full font-semibold text-sm shadow-lg shadow-primary/25 transition-all"
+              className="bg-primary hover:bg-primary-light text-white px-5 py-2 rounded-full font-semibold text-sm shadow-[0_0_15px_rgba(255,107,0,0.5)] transition-all"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 0 20px rgba(255, 107, 0, 0.4)",

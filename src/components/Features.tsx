@@ -1,110 +1,115 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import {
-  TrendingUp,
-  Bell,
-  Search,
-  Calendar,
-  Bookmark,
-  NewspaperIcon,
+  Users,
+  Award,
+  BarChart3,
+  RefreshCcw,
+  Mail,
+  Zap
 } from "lucide-react";
 
 const featureIcons = [
-  <TrendingUp key="trending" className="h-8 w-8 text-primary" />,
-  <NewspaperIcon key="newspaper" className="h-8 w-8 text-primary" />,
-  <Bell key="bell" className="h-8 w-8 text-primary" />,
-  <Search key="search" className="h-8 w-8 text-primary" />,
-  <Calendar key="calendar" className="h-8 w-8 text-primary" />,
-  <Bookmark key="bookmark" className="h-8 w-8 text-primary" />,
+  <Users key="users" className="h-8 w-8 text-primary" />,
+  <Award key="award" className="h-8 w-8 text-primary" />,
+  <BarChart3 key="stats" className="h-8 w-8 text-primary" />,
+  <RefreshCcw key="trakt" className="h-8 w-8 text-primary" />,
+  <Mail key="mail" className="h-8 w-8 text-primary" />,
+  <Zap key="trends" className="h-8 w-8 text-primary" />,
 ];
 
-const defaultFeatures = [
-  {
-    title: "Acompanhe Tendências",
-    description:
-      "Veja quais séries estão bombando no momento, com rankings diários e semanais atualizados em tempo real.",
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
   },
-  {
-    title: "Curiosidades com IA",
-    description:
-      "Acesse curiosidades das suas séries favoritas através de IA, trazendo informações de bastidores e detalhes exclusivos.",
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
-  {
-    title: "Notificações",
-    description:
-      "Receba alertas quando suas séries favoritas entrarem nas tendências ou lançarem novos episódios.",
-  },
-  {
-    title: "Busca Avançada",
-    description:
-      "Encontre rapidamente séries por título, gênero, plataforma ou popularidade com filtros específicos.",
-  },
-  {
-    title: "Calendário",
-    description:
-      "Mantenha-se atualizado com as datas de lançamento dos próximos episódios de suas séries favoritas.",
-  },
-  {
-    title: "Listas Personalizadas",
-    description:
-      "Crie e organize listas personalizadas com as séries que você está assistindo, já assistiu ou planeja assistir.",
-  },
-];
+};
 
 const Features = () => {
   const { translations, language } = useLanguage();
   const t = translations.features;
-  const features = t.items || defaultFeatures;
+  const features = t.items || [];
   const sectionId = language === "en" ? "features" : "recursos";
 
   return (
-    <section id={sectionId} className="py-24 relative">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-[600px] bg-primary/5 rounded-full blur-3xl -z-10" />
+    <section id={sectionId} className="py-32 relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10 animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -z-10" />
 
       <div className="container mx-auto px-4">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-24"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-            {t.title} <span className="text-primary">SeriesTrend</span>
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wider uppercase"
+          >
+            {language === "en" ? "Features" : "Funcionalidades"}
+          </motion.span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tight">
+            {t.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">SeriesTrend</span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            {t.subtitle ||
-              "Descubra todas as ferramentas e recursos que vão transformar a maneira como você acompanha suas séries favoritas."}
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            {t.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {features.map((feature: any, index: number) => (
             <motion.div
               key={index}
-              className="glass-card p-8 rounded-2xl hover:border-primary/30 transition-all duration-300 group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              variants={itemVariants}
+              className="group relative p-8 rounded-3xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-primary/40 transition-all duration-500 overflow-hidden"
+              whileHover={{ y: -10 }}
             >
-              <div className="mb-6 p-3 bg-primary/10 rounded-xl w-fit group-hover:bg-primary/20 transition-colors">
-                {featureIcons[index]}
+              {/* Card Glow Effect */}
+              <div className="absolute -inset-px bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10">
+                <div className="mb-8 p-4 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl w-fit group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                  {featureIcons[index]}
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors duration-300">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {feature.description}
-              </p>
+
+              {/* Decorative Corner Accent */}
+              <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-br-3xl" />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
