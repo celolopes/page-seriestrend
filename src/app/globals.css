@@ -26,6 +26,12 @@
   --color-surface: rgb(var(--surface-rgb));
   --color-surface-light: rgb(var(--surface-light-rgb));
   
+  /* Compatibility aliases for legacy components */
+  --color-accent: var(--color-primary);
+  --color-accent-dark: var(--color-primary-dark);
+  --color-app-dark: var(--color-background);
+  --color-app-surface: var(--color-surface);
+  
   --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
