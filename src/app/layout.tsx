@@ -43,6 +43,9 @@ export const metadata: Metadata = {
       "Acompanhe suas séries, veja o que seus amigos estão assistindo, compartilhe recomendações e conquiste badges na sua rede social de séries.",
     images: ["/images/og-image.jpg"],
   },
+  icons: {
+    icon: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
