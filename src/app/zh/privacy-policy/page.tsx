@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-500 mb-8 text-center">
-              最後更新：{new Date().toLocaleDateString("zh-TW")}
+              最後更新：<time dateTime="2026-11-18">2026/11/18</time>
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">簡介</h2>
@@ -64,6 +64,70 @@ export default function PrivacyPolicy() {
             <h3 className="text-xl font-semibold mt-6 mb-3">位置資訊</h3>
             <p>
               經您同意後，我們可能會收集和處理您的大致位置資訊。這些資訊用於提供基於位置的功能並提升內容的相關性。
+            </p>
+
+            <h2
+              id="google-drive-backup"
+              className="text-2xl font-semibold mt-8 mb-4"
+            >
+              Google Drive 心情記錄備份（Android）
+            </h2>
+            <p>
+              Android 版的 Premium 訂閱者可以授權 SeriesTrend 使用 Google Drive
+              備份及還原心情記錄。Google 會將備份儲存在您授權的 Google 帳戶中，使用專供
+              SeriesTrend 存取的資料夾。<code>drive.appdata</code>{" "}
+              權限僅允許 SeriesTrend 存取該資料夾。這個資料夾不會顯示在 Drive
+              的一般檔案清單中。
+            </p>
+            <p>
+              備份可能包含心情與其強度、影集和集數的識別碼及標題、日期、您選擇的
+              同伴及場所類別、標籤和備註。場所欄位使用您選擇的類別，不會收集 GPS 座標。
+              備份亦可能包含來源平台、備份版本，以及適用時用來識別相關 Trakt
+              帳戶的資訊。
+            </p>
+            <p>
+              取得授權後，您每次儲存記錄的變更時，App 都會排程自動更新備份。
+              啟動此功能時，App 可以自動還原記錄，並會先嘗試使用最新的歷史版本。
+              如果無法使用該版本，則會嘗試使用目前的備份副本。
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              備份保留方式
+            </h3>
+            <p>
+              SeriesTrend 會儲存目前的備份，並嘗試保留最近的 10 個歷史版本。
+              清除舊版本時可能失敗，因此 Drive 可能保留更多版本。App 並未設定
+              備份副本的到期時間。
+            </p>
+            <p>
+              登出帳戶或清除裝置上的資料不會刪除 Drive 中的備份。在裝置上刪除
+              的記錄可能仍保留於先前的版本，並在還原備份時重新出現。
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              如何刪除備份或撤銷存取權
+            </h3>
+            <p>
+              若要刪除備份，請在瀏覽器中使用同一個 Google 帳戶開啟 Google Drive。
+              在<strong>設定</strong>中開啟<strong>管理應用程式</strong>，選擇刪除
+              SeriesTrend 的隱藏應用程式資料。刪除後，這些備份就無法用於還原。請參閱
+              <a
+                href="https://support.google.com/drive/answer/6374270?hl=zh-TW"
+                className="text-accent underline"
+              >
+                Google Drive 說明
+              </a>
+              。
+            </p>
+            <p>
+              您可以在
+              <a
+                href="https://myaccount.google.com/connections"
+                className="text-accent underline"
+              >
+                Google 帳戶的連結設定
+              </a>
+              中撤銷存取權。撤銷後，SeriesTrend 將無法存取 Drive。若要移除已有的
+              備份，請使用 Drive 的刪除功能。如果刪除後存取權仍然有效，SeriesTrend
+              可能會建立新的備份。
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">
@@ -136,7 +200,15 @@ export default function PrivacyPolicy() {
               <li>要求限制處理您的資訊；</li>
               <li>要求資料可攜性。</li>
             </ul>
-            <p>若要行使這些權利，請使用下方提供的聯絡資訊與我們聯繫。</p>
+            <p>若要行使這些權利，請使用下方提供的聯絡資訊與我們聯繫。若要管理
+              Drive 中的備份，請參閱
+              <a
+                href="#google-drive-backup"
+                className="text-accent underline"
+              >
+                備份說明
+              </a>
+              。</p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">隱私政策的變更</h2>
             <p>

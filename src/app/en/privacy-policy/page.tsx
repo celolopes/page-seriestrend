@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-500 mb-8 text-center">
-              Last updated: {new Date().toLocaleDateString("en-US")}
+              Last updated: <time dateTime="2026-11-18">11/18/2026</time>
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Introduction</h2>
@@ -86,6 +86,81 @@ export default function PrivacyPolicy() {
               your approximate location. This information is used to provide
               location-based features and improve the relevance of content
               displayed.
+            </p>
+
+            <h2
+              id="google-drive-backup"
+              className="text-2xl font-semibold mt-8 mb-4"
+            >
+              Mood log backup in Google Drive (Android)
+            </h2>
+            <p>
+              On Android, Premium subscribers can authorize SeriesTrend to use
+              Google Drive to back up and restore their mood logs. Google
+              stores the copies in the private SeriesTrend app data folder in the
+              Google Account you authorized. The <code>drive.appdata</code>{" "}
+              permission gives SeriesTrend access only to that folder, which
+              is hidden from the regular Drive file list.
+            </p>
+            <p>
+              The backup may include moods and their intensity, series and episode
+              identifiers and titles, dates, categories you select for who you
+              were with and where you were, tags, and notes. The location field
+              uses selected categories and does not collect GPS coordinates.
+              The copy may also include the source platform, the backup
+              version, and a reference to the associated Trakt account,
+              where applicable.
+            </p>
+            <p>
+              After you grant access, the app schedules automatic backup updates
+              when you save changes to your logs. When the feature starts,
+              the app can restore your logs automatically. It tries the most
+              recent historical version and, if it is unavailable, tries the
+              current copy.
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              Backup retention
+            </h3>
+            <p>
+              SeriesTrend saves the current backup and tries to keep the 10
+              most recent versions in its history. Cleanup can fail and leave
+              additional versions in Drive. The app sets no expiration period
+              for the copies.
+            </p>
+            <p>
+              Signing out or clearing data on your device does not delete copies
+              in Drive. Logs deleted on the device may remain in earlier
+              versions and reappear when you restore a backup.
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              How to delete backups or revoke access
+            </h3>
+            <p>
+              To delete the copies, open Google Drive in a browser with the
+              same Google Account. In <strong>Settings</strong>, open{" "}
+              <strong>Manage apps</strong> and choose the option to delete
+              SeriesTrend’s hidden app data. After deletion, those copies are
+              no longer available to restore. See{" "}
+              <a
+                href="https://support.google.com/drive/answer/6374270?hl=en-419"
+                className="text-accent underline"
+              >
+                Google Drive Help
+              </a>
+              .
+            </p>
+            <p>
+              You can revoke access in your{" "}
+              <a
+                href="https://myaccount.google.com/connections"
+                className="text-accent underline"
+              >
+                Google Account connections
+              </a>
+              . This stops SeriesTrend from accessing Drive. To remove copies
+              already stored there, use Drive’s deletion control. If access
+              remains active after deletion, SeriesTrend may create a new
+              backup.
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">
@@ -216,7 +291,14 @@ export default function PrivacyPolicy() {
             </ul>
             <p>
               To exercise these rights, please contact us using the information
-              provided below.
+              below. To manage your copies in Drive, see the{" "}
+              <a
+                href="#google-drive-backup"
+                className="text-accent underline"
+              >
+                backup instructions
+              </a>
+              .
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">

@@ -191,6 +191,7 @@ const defaultPtTranslations = {
       "Sincronização Trakt.tv",
       "Rankings e estatísticas",
       "Comparação entre amigos",
+      "Backup e restauração opcionais dos registros de humor no Google Drive (Android, Premium)",
     ],
   },
   header: {
@@ -426,6 +427,7 @@ const defaultEnTranslations = {
       "Trakt.tv synchronization",
       "Rankings and statistics",
       "Friend comparison",
+      "Optional mood log backup and restore with Google Drive (Android, Premium)",
     ],
   },
   header: {
@@ -661,6 +663,7 @@ const defaultEsTranslations = {
       "Sincronización Trakt.tv",
       "Rankings y estadísticas",
       "Comparación entre amigos",
+      "Copia de seguridad y restauración opcionales de los registros de estado de ánimo en Google Drive (Android, Premium)",
     ],
   },
   header: {
@@ -875,6 +878,7 @@ const defaultZhTranslations = {
       "Trakt.tv 同步",
       "排名與統計",
       "好友比較",
+      "可選擇使用 Google Drive 備份及還原心情記錄（Android、Premium）",
     ],
   },
   header: {

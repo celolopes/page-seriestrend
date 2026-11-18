@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-500 mb-8 text-center">
-              Última actualización: {new Date().toLocaleDateString("es-ES")}
+              Última actualización: <time dateTime="2026-11-18">18/11/2026</time>
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Introducción</h2>
@@ -90,6 +90,87 @@ export default function PrivacyPolicy() {
               ubicación aproximada. Esta información se utiliza para
               proporcionar funciones basadas en la ubicación y mejorar la
               relevancia del contenido mostrado.
+            </p>
+
+            <h2
+              id="google-drive-backup"
+              className="text-2xl font-semibold mt-8 mb-4"
+            >
+              Copia de seguridad de registros de estado de ánimo en Google Drive (Android)
+            </h2>
+            <p>
+              En Android, quienes tengan una suscripción Premium pueden autorizar
+              a SeriesTrend a usar Google Drive para respaldar y restaurar sus
+              registros de estado de ánimo. Google almacena las copias en la
+              carpeta privada de datos de SeriesTrend en la Cuenta de Google
+              que autorizaste. El permiso <code>drive.appdata</code> da a
+              SeriesTrend acceso únicamente a esa carpeta, que no aparece en
+              la lista normal de archivos de Drive.
+            </p>
+            <p>
+              La copia puede incluir los estados de ánimo y su intensidad, los
+              identificadores y títulos de series y episodios, las fechas, las
+              categorías que eliges para indicar con quién estabas y dónde,
+              las etiquetas y las notas. El campo de ubicación usa
+              categorías seleccionadas y no recopila coordenadas GPS. La
+              copia también puede incluir la plataforma de origen, la versión
+              de la copia y una referencia a la cuenta de Trakt asociada,
+              cuando corresponda.
+            </p>
+            <p>
+              Una vez autorizado el acceso, la app programa actualizaciones
+              automáticas de la copia cuando guardas cambios en tus registros.
+              Al iniciarse esta función, la app puede restaurar los registros
+              automáticamente. Intenta usar la versión más reciente del
+              historial y, si no está disponible, intenta usar la copia
+              actual.
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              Conservación de las copias de seguridad
+            </h3>
+            <p>
+              SeriesTrend guarda la copia actual e intenta conservar las 10
+              versiones más recientes del historial. La eliminación de
+              versiones antiguas puede fallar y dejar copias adicionales en
+              Drive. La app no establece un plazo de caducidad para las
+              copias.
+            </p>
+            <p>
+              Cerrar sesión o borrar los datos del dispositivo no elimina las
+              copias de Drive. Los registros eliminados en el dispositivo
+              pueden permanecer en versiones anteriores y reaparecer al
+              restaurar una copia.
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              Cómo eliminar las copias o revocar el acceso
+            </h3>
+            <p>
+              Para eliminar las copias, abre Google Drive en un navegador con
+              la misma Cuenta de Google. En <strong>Configuración</strong>,
+              abre <strong>Administrar aplicaciones</strong> y elige la opción
+              para eliminar los datos ocultos de SeriesTrend. Una vez
+              eliminadas, esas copias dejan de estar disponibles para
+              restaurarlas. Consulta la{" "}
+              <a
+                href="https://support.google.com/drive/answer/6374270?hl=es-419"
+                className="text-accent underline"
+              >
+                ayuda de Google Drive
+              </a>
+              .
+            </p>
+            <p>
+              Puedes revocar el acceso en las{" "}
+              <a
+                href="https://myaccount.google.com/connections"
+                className="text-accent underline"
+              >
+                conexiones de tu Cuenta de Google
+              </a>
+              . Esto impide que SeriesTrend acceda a Drive. Para eliminar copias
+              que ya están almacenadas, usa la opción de eliminación de
+              Drive. Si el acceso sigue activo después de borrarlas,
+              SeriesTrend puede crear una nueva copia.
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">
@@ -221,8 +302,15 @@ export default function PrivacyPolicy() {
               <li>Solicitar la portabilidad de los datos.</li>
             </ul>
             <p>
-              Para ejercer estos derechos, por favor contáctanos usando la
-              información proporcionada a continuación.
+              Para ejercer estos derechos, contáctanos por los medios indicados
+              abajo. Para administrar tus copias en Drive, consulta las{" "}
+              <a
+                href="#google-drive-backup"
+                className="text-accent underline"
+              >
+                instrucciones sobre la copia de seguridad
+              </a>
+              .
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">

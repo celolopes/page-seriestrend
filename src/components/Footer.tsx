@@ -9,6 +9,8 @@ import { useLanguage } from "@/context/LanguageContext";
 const Footer = () => {
   const { translations, language } = useLanguage();
   const t = translations.footer;
+  const privacyPolicyHref =
+    language === "pt-BR" ? "/privacy-policy" : `/${language}/privacy-policy`;
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
@@ -20,7 +22,7 @@ const Footer = () => {
 
   const legalLinks = [
     { label: t.legal.terms, href: "/terms" },
-    { label: t.legal.privacy, href: "/privacy-policy" },
+    { label: t.legal.privacy, href: privacyPolicyHref },
     { label: t.legal.cookies, href: "#" },
     { label: t.legal.licenses, href: "#" },
   ];

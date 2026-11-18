@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-500 mb-8 text-center">
-              Última atualização: {new Date().toLocaleDateString("pt-BR")}
+              Última atualização: <time dateTime="2026-11-18">18/11/2026</time>
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Introdução</h2>
@@ -92,6 +92,80 @@ export default function PrivacyPolicy() {
               sua localização aproximada. Estas informações são utilizadas para
               fornecer recursos baseados em localização e melhorar a relevância
               do conteúdo exibido.
+            </p>
+
+            <h2
+              id="google-drive-backup"
+              className="text-2xl font-semibold mt-8 mb-4"
+            >
+              Backup de registros de humor no Google Drive (Android)
+            </h2>
+            <p>
+              No Android, assinantes Premium podem autorizar o SeriesTrend a usar o
+              Google Drive para fazer backup e restaurar seus registros de humor.
+              O Google armazena as cópias na área privada de dados do
+              SeriesTrend na Conta do Google que você autorizou. A permissão{" "}
+              <code>drive.appdata</code> dá ao SeriesTrend acesso apenas a essa
+              área, que fica oculta na lista normal de arquivos do Drive.
+            </p>
+            <p>
+              O backup pode incluir o humor e sua intensidade, identificadores e
+              títulos de séries e episódios, datas, categorias de companhia e
+              de local que você seleciona, tags e notas. O campo de local usa
+              categorias selecionadas, não coleta coordenadas GPS. A cópia
+              também pode conter a plataforma de origem, a versão do backup
+              e uma referência à conta Trakt associada, quando aplicável.
+            </p>
+            <p>
+              Após a autorização, o app agenda atualizações automáticas do backup
+              quando você salva alterações nos registros. Ao inicializar o
+              recurso, o app pode restaurar automaticamente os registros. Ele
+              tenta usar a versão mais recente do histórico e, se ela estiver
+              indisponível, tenta usar a cópia atual.
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              Retenção dos backups
+            </h3>
+            <p>
+              O SeriesTrend grava a versão atual do backup e tenta manter as
+              10 versões mais recentes no histórico. A limpeza pode falhar e deixar
+              versões adicionais no Drive. O app não define um prazo de
+              expiração para as cópias.
+            </p>
+            <p>
+              Sair da conta ou limpar os dados no aparelho não apaga as cópias no
+              Drive. Registros excluídos no aparelho podem permanecer em
+              versões anteriores e reaparecer ao restaurar um backup.
+            </p>
+            <h3 className="text-xl font-semibold mt-6 mb-3">
+              Como excluir backups ou revogar o acesso
+            </h3>
+            <p>
+              Para excluir as cópias, abra o Google Drive no navegador com a
+              mesma Conta do Google. Em <strong>Configurações</strong>, abra{" "}
+              <strong>Gerenciar aplicativos</strong> e use a opção de excluir
+              os dados ocultos do SeriesTrend. Após a exclusão, essas cópias
+              deixam de estar disponíveis para restauração. Consulte a{" "}
+              <a
+                href="https://support.google.com/drive/answer/6374270?hl=pt-BR"
+                className="text-accent underline"
+              >
+                ajuda do Google Drive
+              </a>
+              .
+            </p>
+            <p>
+              Você pode revogar o acesso nas{" "}
+              <a
+                href="https://myaccount.google.com/connections"
+                className="text-accent underline"
+              >
+                conexões da sua Conta do Google
+              </a>
+              . Isso impede o SeriesTrend de acessar o Drive. Para remover
+              cópias já armazenadas, use o controle de exclusão do Drive.
+              Se a autorização continuar ativa após a exclusão, o SeriesTrend
+              poderá criar um novo backup.
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">
@@ -230,8 +304,15 @@ export default function PrivacyPolicy() {
               <li>Solicitar a portabilidade de seus dados.</li>
             </ul>
             <p>
-              Para exercer esses direitos, entre em contato conosco através das
-              informações fornecidas abaixo.
+              Para exercer esses direitos, entre em contato conosco pelos canais
+              abaixo. Para gerenciar suas cópias no Drive, consulte as{" "}
+              <a
+                href="#google-drive-backup"
+                className="text-accent underline"
+              >
+                instruções sobre o backup
+              </a>
+              .
             </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">
@@ -263,7 +344,7 @@ export default function PrivacyPolicy() {
               <li>
                 <strong>Pelo formulário de contato:</strong>{" "}
                 <Link href="/contato" className="text-accent hover:underline">
-                  seriestrend.vercel.app/contato
+                  Abrir formulário de contato
                 </Link>
               </li>
             </ul>
