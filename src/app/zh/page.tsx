@@ -1,4 +1,5 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
@@ -17,6 +18,7 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("home", "zh-Hant"),
   title: "SeriesTrend - 追蹤影集並與朋友連結",
   description: "追蹤影集、查看朋友正在看什麼、反應、分享推薦並獲得徽章。透過 Trakt.tv 同步的社群追蹤。",
 };

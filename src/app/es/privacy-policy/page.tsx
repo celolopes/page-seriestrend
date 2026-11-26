@@ -1,8 +1,10 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("privacy", "es"),
   title: "Política de Privacidad | SeriesTrend",
   description:
     "Política de privacidad de la aplicación SeriesTrend - Cómo gestionamos tus datos e información personal",

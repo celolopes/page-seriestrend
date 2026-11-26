@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/site-seo";
 
 import "../globals.css";
 
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://seriestrend.vercel.app"),
+  metadataBase: new URL(SITE_ORIGIN),
   title: "SeriesTrend - Track What's Trending",
   description:
     "The essential app to track the most watched TV series trends of the week and day",
@@ -20,11 +21,11 @@ export const metadata: Metadata = {
     title: "SeriesTrend - Track What's Trending",
     description:
       "The essential app to track the most watched TV series trends of the week and day",
-    url: "https://seriestrend.vercel.app/en",
+    url: "./",
     siteName: "SeriesTrend",
     images: [
       {
-        url: "https://seriestrend.vercel.app/images/og-image.jpg",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "SeriesTrend App Preview",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: "SeriesTrend - Track What's Trending",
     description:
       "The essential app to track the most watched TV series trends of the week and day",
-    images: ["https://seriestrend.vercel.app/images/og-image.jpg"],
+    images: ["/images/og-image.jpg"],
   },
   icons: {
     icon: [

@@ -1,4 +1,5 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
@@ -17,6 +18,7 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("home", "en"),
   title: "SeriesTrend - Track Series & Connect with Friends",
   description:
     "Track series, see what your friends are watching, react, share recommendations and earn badges. Social tracking with Trakt.tv sync.",

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/site-seo";
 import { Inter } from "next/font/google";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://seriestrend.vercel.app"),
+  metadataBase: new URL(SITE_ORIGIN),
   title: "SeriesTrend - Sigue las tendencias de series",
   description:
     "La app esencial para seguir las tendencias de series más vistas de la semana y el día",
@@ -20,11 +21,11 @@ export const metadata: Metadata = {
     title: "SeriesTrend - Sigue las tendencias de series",
     description:
       "La app esencial para seguir las tendencias de series más vistas de la semana y el día",
-    url: "https://seriestrend.vercel.app/es",
+    url: "./",
     siteName: "SeriesTrend",
     images: [
       {
-        url: "https://seriestrend.vercel.app/images/og-image.jpg",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Vista previa de la app SeriesTrend",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: "SeriesTrend - Sigue las tendencias de series",
     description:
       "La app esencial para seguir las tendencias de series más vistas de la semana y el día",
-    images: ["https://seriestrend.vercel.app/images/og-image.jpg"],
+    images: ["/images/og-image.jpg"],
   },
   icons: {
     icon: [

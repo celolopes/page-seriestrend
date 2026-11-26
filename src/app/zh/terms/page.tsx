@@ -1,8 +1,10 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("terms", "zh-Hant"),
   title: "使用條款 | SeriesTrend",
   description: "SeriesTrend 應用程式使用條款 - 服務使用規則與條件",
 };

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/site-seo";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://seriestrend.vercel.app"),
+  metadataBase: new URL(SITE_ORIGIN),
   title: "SeriesTrend - Descubra Séries e Conecte-se",
   description:
     "SeriesTrend - Acompanhe suas séries, veja o que seus amigos estão assistindo, compartilhe recomendações e conquiste badges na sua rede social de séries.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     title: "SeriesTrend - Descubra Séries e Conecte-se",
     description:
       "Acompanhe suas séries, veja o que seus amigos estão assistindo, compartilhe recomendações e conquiste badges na sua rede social de séries.",
-    url: "https://seriestrend.vercel.app",
+    url: "./",
     siteName: "SeriesTrend",
     images: [
       {

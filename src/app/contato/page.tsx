@@ -1,8 +1,10 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("contact", "pt-BR"),
   title: "Contato | SeriesTrend",
   description:
     "Entre em contato com a equipe do SeriesTrend para suporte, dúvidas ou sugestões",

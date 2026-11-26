@@ -1,8 +1,10 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("contact", "zh-Hant"),
   title: "聯絡我們 | SeriesTrend",
   description: "聯絡 SeriesTrend 團隊以獲得支援、提問或建議",
 };

@@ -1,8 +1,10 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("privacy", "zh-Hant"),
   title: "隱私政策 | SeriesTrend",
   description: "SeriesTrend 應用程式隱私政策 - 我們如何處理您的資料與個人資訊",
 };

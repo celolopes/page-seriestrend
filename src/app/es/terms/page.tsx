@@ -1,8 +1,10 @@
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: pageAlternates("terms", "es"),
   title: "Términos de Uso | SeriesTrend",
   description:
     "Términos de uso de la app SeriesTrend - Reglas y condiciones para el uso del servicio",

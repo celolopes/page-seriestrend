@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import React from "react";
+import { pageAlternates } from "@/lib/site-seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -18,6 +20,10 @@ import { LanguageProvider } from "@/context/LanguageContext";
 // Imports com carregamento dinâmico para melhorar performance
 // const Screenshots = dynamic(() => import('@/components/Screenshots'), { ssr: true });
 // const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: true });
+
+export const metadata: Metadata = {
+  alternates: pageAlternates("home", "pt-BR"),
+};
 
 export default function Home() {
   return (
